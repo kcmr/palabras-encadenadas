@@ -1,0 +1,42 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "source": "src/index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 0",
+    "clean": "rimraf dist .parcel-cache",
+    "prestart": "npm run clean",
+    "start": "parcel",
+    "prebuild": "npm run clean",
+    "build": "parcel build",
+    "launch:prod": "npm run build && npx http-server dist",
+    "format": "prettier . --write",
+    "lint": "eslint . --ignore-path .gitignore --color --no-error-on-unmatched-pattern --max-warnings 0",
+    "lint:fix": "eslint . --ignore-path .gitignore --fix --no-error-on-unmatched-pattern"
+  },
+  "@parcel/transformer-css": {
+    "cssModules": true
+  },
+  "keywords": [],
+  "author": "Kus Cámara",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/react": "^18.0.25",
+    "@types/react-dom": "^18.0.9",
+    "@typescript-eslint/eslint-plugin": "^5.44.0",
+    "@typescript-eslint/parser": "^5.44.0",
+    "eslint": "^8.28.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-react": "^7.31.11",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "parcel": "^2.8.0",
+    "prettier": "^2.8.0",
+    "rimraf": "^3.0.2"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
