@@ -1,0 +1,26 @@
+.main {
+  display: grid;
+  place-content: center;
+  height: 100vh;
+  padding: 1rem;
+}
+
+.gameInfo {
+  font-size: calc(18 / 16 * 1rem);
+  font-weight: 600;
+  opacity: 0.5;
+}
+
+.timer {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  composes: gameInfo;
+}
+
+.points {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  composes: gameInfo;
+}

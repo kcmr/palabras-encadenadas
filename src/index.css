@@ -1,0 +1,28 @@
+:root {
+  --font-family: Futura, Futura-Medium, 'Futura Medium', 'Century Gothic', CenturyGothic,
+    'Apple Gothic', AppleGothic, 'URW Gothic L', 'Avant Garde', sans-serif;
+
+  --bg-color-ok: #5d922f;
+  --bg-color-warn: #e87405;
+  --bg-color-alert: #da1e31;
+
+  --bg-color: var(--bg-color-ok);
+  --fg-color: #fff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  background-color: var(--bg-color);
+  color: var(--fg-color);
+  transition: background-color 3s;
+}
+
+::placeholder {
+  color: inherit;
+  opacity: 0.5;
+}
