@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { getWords } from '../api/words'
+import { useRandomString } from '../hooks/use-random-string'
 import { MessageType, Words } from '../types'
 import { setRemainingTimeWarnLevel } from '../utils'
 import * as classes from './app.module.css'
@@ -19,7 +20,7 @@ const messages = new Map<MessageType, string>([
 
 export const App = () => {
   const [words, setWords] = useState<Words | null>(null)
-  const [timerKey, setTimerKey] = useState('timer')
+  const [timerKey, restartTimer] = useRandomString('timer')
   const [timerStarted, setTimerStarted] = useState(false)
   const [usedWords, setUsedWords] = useState(new Set())
   const [message, setMessage] = useState(messages.get('default'))
@@ -27,8 +28,6 @@ export const App = () => {
   useEffect(() => {
     getWords().then(setWords)
   }, [])
-
-  const restartTimer = () => setTimerKey(Math.random().toString(36).slice(2))
 
   const handleWordSubmit = (word: string, callback: VoidFunction) => {
     if (validateWord(word)) {
