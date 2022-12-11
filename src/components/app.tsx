@@ -58,6 +58,12 @@ export const App = () => {
     restartTimer()
   }
 
+  const handleFormChange = () => {
+    if (formHasError) {
+      setMessage(undefined)
+    }
+  }
+
   const formHasError = errorMessages.includes(message)
 
   const content = !words ? (
@@ -74,6 +80,7 @@ export const App = () => {
       />
       <WordForm
         words={words}
+        onChange={handleFormChange}
         onWordSubmit={handleWordSubmit}
         onFirstInput={handleFirstInput}
         hasError={formHasError}

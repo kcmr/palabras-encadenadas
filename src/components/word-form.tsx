@@ -1,6 +1,6 @@
 import 'animate.css'
 import classnames from 'classnames'
-import { useState } from 'react'
+import { ChangeEvent, useState } from 'react'
 import { useIsFirstRender } from 'usehooks-ts'
 import { removeAccents } from '../utils'
 import * as classes from './word-form.module.css'
@@ -10,6 +10,7 @@ type WordFormProps = {
   hasError?: boolean
   onWordSubmit: (word: string, callback: VoidFunction) => void
   onFirstInput?: () => void
+  onChange?: VoidFunction
 }
 
 export const WordForm = ({
@@ -17,6 +18,7 @@ export const WordForm = ({
   hasError = false,
   onWordSubmit,
   onFirstInput,
+  onChange,
 }: WordFormProps) => {
   const [inputValue, setInputValue] = useState('')
   const [prefix, setPrefix] = useState('')
@@ -31,6 +33,11 @@ export const WordForm = ({
       setPrefix(words[word])
       setInputValue('')
     })
+  }
+
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.currentTarget.value)
+    onChange?.()
   }
 
   const formClass = classnames({
@@ -58,7 +65,7 @@ export const WordForm = ({
           autoFocus
           type="text"
           value={inputValue}
-          onChange={(e) => setInputValue(e.currentTarget.value)}
+          onChange={handleInputChange}
           onInput={() => isFirstRender && onFirstInput?.()}
         />
       </div>
