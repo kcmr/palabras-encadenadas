@@ -1,15 +1,5 @@
 .form {
-  margin-top: calc(240 / 16 * 1rem);
-}
-
-.form::after {
-  content: '';
-  display: block;
-  height: 2px;
-  width: 100%;
-  margin-top: var(--grid-size);
-  background-color: var(--fg-color);
-  border-radius: 2px;
+  margin-top: 45%;
 }
 
 .form input {
@@ -27,4 +17,32 @@
   line-height: 1.0666;
   font-weight: 800;
   user-select: none;
+}
+
+.messages::before {
+  content: '';
+  display: block;
+  height: 2px;
+  width: 100%;
+  margin-top: var(--grid-size);
+  background-color: var(--fg-color);
+  border-radius: 2px;
+}
+
+.messages {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  width: 100%;
+}
+
+.message {
+  flex: 1;
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+.arrow {
+  transform: rotate(243deg) scaleX(-1);
 }
