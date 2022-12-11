@@ -1,8 +1,7 @@
 import { ComponentProps, ReactNode } from 'react'
-import { ArrowIcon } from '../icons/arrow-icon'
 import * as classes from './message.module.css'
 import classnames from 'classnames'
-import { InfoIcon } from '../icons/info-icon'
+import { AlertIcon, ArrowIcon } from '../icons'
 
 type MessageProps = {
   type?: 'info' | 'error'
@@ -25,5 +24,5 @@ const Icon = ({ type }: { type: MessageProps['type'] }) => {
     )
   }
 
-  return <InfoIcon size={20} color="var(--fg-color)" aria-hidden="true"></InfoIcon>
+  return <AlertIcon size={18} color="var(--fg-color)" aria-hidden="true" />
 }
