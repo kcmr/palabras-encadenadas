@@ -57,6 +57,11 @@ export const App = () => {
     restartTimer()
   }
 
+  const getMessageType = (message = '') => {
+    const errorMessages = [messages.get('invalid'), messages.get('duplicated')]
+    return errorMessages.includes(message) ? 'error' : 'info'
+  }
+
   const content = !words ? (
     <p>Cargando diccionario…</p>
   ) : (
@@ -70,7 +75,11 @@ export const App = () => {
         started={timerStarted}
       />
       <WordForm words={words} onWordSubmit={handleWordSubmit} onFirstInput={handleFirstInput} />
-      <Message className={classes.messages} hidden={!Boolean(message)}>
+      <Message
+        className={classes.messages}
+        hidden={!Boolean(message)}
+        type={getMessageType(message)}
+      >
         {message}
       </Message>
     </>
