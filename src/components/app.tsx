@@ -14,7 +14,7 @@ const SECONS_PER_WORD = 10
 
 const messages = new Map<MessageType, string>([
   ['default', 'Escribe una palabra y pulsa intro'],
-  ['invalid', 'No tenemos esa palabra en la lista'],
+  ['invalid', 'Palabra desconocida'],
   ['duplicated', 'Palabra repe'],
 ])
 const errorMessages = [messages.get('invalid'), messages.get('duplicated')]
@@ -59,7 +59,7 @@ export const App = () => {
   }
 
   const handleFormChange = () => {
-    if (formHasError) {
+    if (usedWords.size > 0) {
       setMessage(undefined)
     }
   }
