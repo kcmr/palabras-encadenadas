@@ -1,11 +1,12 @@
-import { WordForm } from './components/WordForm'
-import { Timer } from './components/Timer'
 import { useEffect, useState } from 'react'
-import * as classes from './App.module.css'
-import { Points } from './components/Points'
-import { getWords } from './api/words'
-import { Words } from './types'
-import { setRemainingTimeWarnLevel } from './utils'
+import { Words } from '../types'
+import { Timer } from './timer'
+import { Points } from './points'
+import { Layout } from './layout'
+import { WordForm } from './word-form'
+import { getWords } from '../api/words'
+import { setRemainingTimeWarnLevel } from '../utils'
+import * as classes from './app.module.css'
 
 const SECONS_PER_WORD = 10
 
@@ -22,15 +23,19 @@ export const App = () => {
   const restartTimer = () => setTimerKey(Math.random().toString(36).slice(2))
 
   const handleWordSubmit = (word: string, callback: VoidFunction) => {
-    if (word in words!) {
-      if (usedWords.has(word)) {
-        alert('Palabra repe')
-      } else {
-        setUsedWords(new Set(usedWords.add(word)))
-        restartTimer()
-        callback()
-      }
+    if (!(word in words!)) {
+      // TODO -> alert "not found"
+      return
     }
+
+    if (usedWords.has(word)) {
+      // TODO -> alert palabra repe
+      return
+    }
+
+    setUsedWords(new Set(usedWords.add(word)))
+    restartTimer()
+    callback()
   }
 
   const handleFirstInput = () => {
@@ -38,12 +43,10 @@ export const App = () => {
     restartTimer()
   }
 
-  if (!words) {
-    return <p>Cargando diccionario…</p>
-  }
-
-  return (
-    <main className={classes.main}>
+  const content = !words ? (
+    <p>Cargando diccionario…</p>
+  ) : (
+    <>
       <Points className={classes.points} total={usedWords.size} />
       <Timer
         className={classes.timer}
@@ -53,6 +56,8 @@ export const App = () => {
         started={timerStarted}
       />
       <WordForm words={words} onWordSubmit={handleWordSubmit} onFirstInput={handleFirstInput} />
-    </main>
+    </>
   )
+
+  return <Layout>{content}</Layout>
 }

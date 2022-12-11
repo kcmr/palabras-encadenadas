@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useIsFirstRender } from 'usehooks-ts'
-import { removeAccents } from '../utils/remove-accents'
-import * as classes from './WordForm.module.css'
+import { removeAccents } from '../utils'
+import * as classes from './word-form.module.css'
 
 type WordFormProps = {
   words: { [key: string]: string }
