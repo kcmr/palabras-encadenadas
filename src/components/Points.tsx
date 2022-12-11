@@ -1,13 +1,14 @@
-import { ComponentPropsWithoutRef } from 'react'
+import classnames from 'classnames'
+import { ComponentProps } from 'react'
 import * as classes from './points.module.css'
 
 type PointProps = {
   total: number
-} & ComponentPropsWithoutRef<'p'>
+} & ComponentProps<'p'>
 
 export const Points = ({ total, ...rest }: PointProps) => {
   return (
-    <p {...rest} className={`${classes.points} ${rest.className ?? ''}`}>
+    <p {...rest} className={classnames(classes.points, rest.className)}>
       <span className={classes.number}>{total}</span> palabra(s)
     </p>
   )
