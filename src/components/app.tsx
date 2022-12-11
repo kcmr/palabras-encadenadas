@@ -71,13 +71,6 @@ export const App = () => {
   ) : (
     <>
       <Points className={classes.points} total={usedWords.size} />
-      <Timer
-        className={classes.timer}
-        countStart={SECONS_PER_WORD}
-        onTick={setRemainingTimeWarnLevel}
-        key={timerKey}
-        started={timerStarted}
-      />
       <WordForm
         words={words}
         onChange={handleFormChange}
@@ -85,13 +78,18 @@ export const App = () => {
         onFirstInput={handleFirstInput}
         hasError={formHasError}
       />
-      <Message
-        className={classes.messages}
-        hidden={!Boolean(message)}
-        type={formHasError ? 'error' : 'info'}
-      >
-        {message}
-      </Message>
+      <div className={classes.afterForm}>
+        <Message hidden={!Boolean(message)} type={formHasError ? 'error' : 'info'}>
+          {message}
+        </Message>
+        <Timer
+          className={classes.timer}
+          countStart={SECONS_PER_WORD}
+          onTick={setRemainingTimeWarnLevel}
+          key={timerKey}
+          started={timerStarted}
+        />
+      </div>
     </>
   )
 

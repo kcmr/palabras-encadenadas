@@ -1,5 +1,8 @@
-import { ComponentPropsWithoutRef, useEffect } from 'react'
+import { ComponentProps, useEffect } from 'react'
 import { useCountdown } from 'usehooks-ts'
+import { AlarmIcon } from '../icons'
+import classnames from 'classnames'
+import * as classes from './timer.module.css'
 
 const ONE_SECOND = 1000
 
@@ -7,7 +10,7 @@ type TimerProps = {
   onTick: (timeLeft: number) => void
   countStart: number
   started: boolean
-} & ComponentPropsWithoutRef<'span'>
+} & ComponentProps<'div'>
 
 export const Timer = ({ onTick, countStart, started, ...rest }: TimerProps) => {
   const [timeLeft, { startCountdown }] = useCountdown({
@@ -23,5 +26,10 @@ export const Timer = ({ onTick, countStart, started, ...rest }: TimerProps) => {
 
   onTick(timeLeft)
 
-  return <span {...rest}>{timeLeft}</span>
+  return (
+    <div {...rest} className={classnames(classes.timer, rest.className)}>
+      <span className={classes.text}>{timeLeft}</span>
+      <AlarmIcon size={14} color="var(--fg-color)" aria-hidden="true" />
+    </div>
+  )
 }
