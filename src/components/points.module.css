@@ -1,0 +1,14 @@
+.points {
+  text-align: center;
+  margin: 0;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+  opacity: 0.4;
+}
+
+.number {
+  font-size: calc(40 / 16 * 1rem);
+  line-height: 1;
+}

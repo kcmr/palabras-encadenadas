@@ -13,7 +13,7 @@
 
 .points {
   position: absolute;
-  top: 1rem;
-  left: 1rem;
-  composes: gameInfo;
+  top: calc(80 / 16 * 1rem);
+  left: 0;
+  right: 0;
 }
