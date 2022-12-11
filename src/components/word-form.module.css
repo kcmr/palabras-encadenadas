@@ -8,18 +8,7 @@
   all: inherit;
 }
 
-.content {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  text-transform: uppercase;
-  font-size: calc(30 / 16 * 1rem);
-  line-height: 1.0666;
-  font-weight: 800;
-  user-select: none;
-}
-
-.messages::before {
+.form::after {
   content: '';
   display: block;
   height: 2px;
@@ -29,20 +18,13 @@
   border-radius: 2px;
 }
 
-.messages {
+.content {
   display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  align-items: flex-end;
+  align-items: center;
   width: 100%;
-}
-
-.message {
-  flex: 1;
-  font-size: 1rem;
-  opacity: 0.8;
-}
-
-.arrow {
-  transform: rotate(243deg) scaleX(-1);
+  text-transform: uppercase;
+  font-size: calc(30 / 16 * 1rem);
+  line-height: 1.0666;
+  font-weight: 800;
+  user-select: none;
 }

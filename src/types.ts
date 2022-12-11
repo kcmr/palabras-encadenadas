@@ -8,3 +8,5 @@ export type IconProps = {
   size?: number
   color?: string
 } & ComponentProps<'svg'>
+
+export type MessageType = 'default' | 'invalid' | 'duplicated'
