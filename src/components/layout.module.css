@@ -1,8 +1,4 @@
 .main {
-  display: grid;
-  place-items: center;
-  height: 100vh;
-  max-height: -webkit-fill-available;
   padding: 1rem;
   position: relative;
 }

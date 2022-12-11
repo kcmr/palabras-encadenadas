@@ -8,10 +8,18 @@
 
   --bg-color: var(--bg-color-ok);
   --fg-color: #fff;
+
+  --grid-size: calc(8 / 16 * 1rem);
 }
 
 * {
   box-sizing: border-box;
+}
+
+html,
+body,
+:global(#root) {
+  height: 100%;
 }
 
 body {

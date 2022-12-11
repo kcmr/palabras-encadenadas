@@ -34,15 +34,16 @@ export const WordForm = ({ words, onWordSubmit, onFirstInput }: WordFormProps) =
       autoComplete="off"
       spellCheck="false"
     >
-      <span>{prefix}</span>
-      <input
-        autoFocus
-        type="text"
-        value={inputValue}
-        onChange={(e) => setInputValue(e.currentTarget.value)}
-        onInput={() => isFirstRender && onFirstInput?.()}
-        placeholder="…"
-      />
+      <div className={classes.content}>
+        <span>{prefix}</span>
+        <input
+          autoFocus
+          type="text"
+          value={inputValue}
+          onChange={(e) => setInputValue(e.currentTarget.value)}
+          onInput={() => isFirstRender && onFirstInput?.()}
+        />
+      </div>
     </form>
   )
 }
