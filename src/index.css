@@ -10,6 +10,10 @@
   --fg-color: #fff;
 
   --grid-size: calc(8 / 16 * 1rem);
+
+  /* animate.css */
+  --animate-duration: 400ms;
+  --animate-delay: 0.2s;
 }
 
 * {
@@ -18,7 +22,7 @@
 
 html,
 body,
-:global(#root) {
+#root {
   height: 100%;
 }
 
@@ -35,7 +39,7 @@ body {
   opacity: 0.5;
 }
 
-:global(.visually-hidden) {
+.visually-hidden {
   position: absolute !important;
   width: 1px !important;
   height: 1px !important;

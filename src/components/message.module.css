@@ -6,6 +6,10 @@
   width: 100%;
 }
 
+.message[hidden] {
+  display: none;
+}
+
 .text {
   flex: 1;
   font-size: 1rem;

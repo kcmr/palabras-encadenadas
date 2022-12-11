@@ -1,6 +1,7 @@
 import { ComponentProps, ReactNode } from 'react'
 import { ArrowIcon } from '../icons/arrow-icon'
 import * as classes from './message.module.css'
+import classnames from 'classnames'
 
 type MessageProps = {
   type?: 'info' | 'error'
@@ -9,7 +10,7 @@ type MessageProps = {
 
 export const Message = ({ type = 'info', children, ...rest }: MessageProps) => {
   return (
-    <div {...rest} className={`${classes.message} ${rest.className ?? ''}`}>
+    <div {...rest} className={classnames(classes.message, rest.className)}>
       <Icon type={type} />
       <span className={classes.text}>{children}</span>
     </div>

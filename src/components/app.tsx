@@ -31,19 +31,26 @@ export const App = () => {
   const restartTimer = () => setTimerKey(Math.random().toString(36).slice(2))
 
   const handleWordSubmit = (word: string, callback: VoidFunction) => {
+    if (validateWord(word)) {
+      setUsedWords(new Set(usedWords.add(word)))
+      restartTimer()
+      callback()
+    }
+  }
+
+  const validateWord = (word: string): boolean => {
     if (!(word in words!)) {
       setMessage(messages.get('invalid'))
-      return
+      return false
     }
 
     if (usedWords.has(word)) {
       setMessage(messages.get('duplicated'))
-      return
+      return false
     }
 
-    setUsedWords(new Set(usedWords.add(word)))
-    restartTimer()
-    callback()
+    setMessage(undefined)
+    return true
   }
 
   const handleFirstInput = () => {
@@ -64,7 +71,9 @@ export const App = () => {
         started={timerStarted}
       />
       <WordForm words={words} onWordSubmit={handleWordSubmit} onFirstInput={handleFirstInput} />
-      <Message className={classes.messages}>{message}</Message>
+      <Message className={classes.messages} hidden={!Boolean(message)}>
+        {message}
+      </Message>
     </>
   )
 
