@@ -17,6 +17,7 @@ const messages = new Map<MessageType, string>([
   ['invalid', 'No tenemos esa palabra en la lista'],
   ['duplicated', 'Palabra repe'],
 ])
+const errorMessages = [messages.get('invalid'), messages.get('duplicated')]
 
 export const App = () => {
   const [words, setWords] = useState<Words | null>(null)
@@ -57,10 +58,7 @@ export const App = () => {
     restartTimer()
   }
 
-  const getMessageType = (message = '') => {
-    const errorMessages = [messages.get('invalid'), messages.get('duplicated')]
-    return errorMessages.includes(message) ? 'error' : 'info'
-  }
+  const formHasError = errorMessages.includes(message)
 
   const content = !words ? (
     <p>Cargando diccionario…</p>
@@ -74,11 +72,16 @@ export const App = () => {
         key={timerKey}
         started={timerStarted}
       />
-      <WordForm words={words} onWordSubmit={handleWordSubmit} onFirstInput={handleFirstInput} />
+      <WordForm
+        words={words}
+        onWordSubmit={handleWordSubmit}
+        onFirstInput={handleFirstInput}
+        hasError={formHasError}
+      />
       <Message
         className={classes.messages}
         hidden={!Boolean(message)}
-        type={getMessageType(message)}
+        type={formHasError ? 'error' : 'info'}
       >
         {message}
       </Message>
