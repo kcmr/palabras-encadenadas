@@ -1,0 +1,17 @@
+.message {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  width: 100%;
+}
+
+.text {
+  flex: 1;
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+.arrow {
+  transform: rotate(243deg) scaleX(-1);
+}

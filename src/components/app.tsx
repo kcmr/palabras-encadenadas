@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react'
-import { MessageType, Words } from '../types'
-import { Timer } from './timer'
-import { Points } from './points'
-import { Layout } from './layout'
-import { WordForm } from './word-form'
 import { getWords } from '../api/words'
+import { MessageType, Words } from '../types'
 import { setRemainingTimeWarnLevel } from '../utils'
 import * as classes from './app.module.css'
-import { ArrowIcon } from '../icons/arrow-icon'
+import { Layout } from './layout'
+import { Message } from './message'
+import { Points } from './points'
+import { Timer } from './timer'
+import { WordForm } from './word-form'
 
 const SECONS_PER_WORD = 10
 
@@ -64,10 +64,7 @@ export const App = () => {
         started={timerStarted}
       />
       <WordForm words={words} onWordSubmit={handleWordSubmit} onFirstInput={handleFirstInput} />
-      <div className={classes.messages}>
-        <ArrowIcon size={22} className={classes.arrow} color="var(--fg-color)" />
-        <span className={classes.message}>{message}</span>
-      </div>
+      <Message className={classes.messages}>{message}</Message>
     </>
   )
 
