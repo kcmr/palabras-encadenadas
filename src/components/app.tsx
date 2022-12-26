@@ -70,6 +70,13 @@ export const App = () => {
     <p>Cargando diccionario…</p>
   ) : (
     <>
+      <Timer
+        className={classes.timer}
+        countStart={SECONS_PER_WORD}
+        onTick={setRemainingTimeWarnLevel}
+        key={timerKey}
+        started={timerStarted}
+      />
       <Points className={classes.points} total={usedWords.size} />
       <Form
         words={words}
@@ -82,13 +89,6 @@ export const App = () => {
         <Message hidden={!Boolean(message)} type={formHasError ? 'error' : 'info'}>
           {message}
         </Message>
-        <Timer
-          className={classes.timer}
-          countStart={SECONS_PER_WORD}
-          onTick={setRemainingTimeWarnLevel}
-          key={timerKey}
-          started={timerStarted}
-        />
       </div>
     </>
   )

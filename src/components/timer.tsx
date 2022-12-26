@@ -29,7 +29,7 @@ export const Timer = ({ onTick, countStart, started, ...rest }: TimerProps) => {
   return (
     <div {...rest} className={classnames(classes.timer, rest.className)}>
       <span className={classes.text}>{timeLeft}</span>
-      <AlarmIcon size={14} color="var(--fg-color)" aria-hidden="true" />
+      <AlarmIcon size={20} color="var(--fg-color)" aria-hidden="true" />
     </div>
   )
 }

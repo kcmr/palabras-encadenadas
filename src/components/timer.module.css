@@ -5,8 +5,7 @@
 }
 
 .text {
-  font-size: calc(14 / 16 * 1rem);
-  line-height: calc(22 / 16 * 1rem);
+  line-height: 1.25;
   opacity: 0.8;
-  font-weight: normal;
+  font-weight: bold;
 }
