@@ -1,0 +1,30 @@
+.form {
+  margin-top: 48%;
+}
+
+.form input {
+  flex: 1;
+  padding: 0;
+  all: inherit;
+}
+
+.form::after {
+  content: '';
+  display: block;
+  height: 2px;
+  width: 100%;
+  margin-top: var(--grid-size);
+  background-color: var(--fg-color);
+  border-radius: 2px;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  text-transform: uppercase;
+  font-size: calc(30 / 16 * 1rem);
+  line-height: 1.0666;
+  font-weight: 800;
+  user-select: none;
+}

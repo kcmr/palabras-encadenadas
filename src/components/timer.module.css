@@ -1,0 +1,11 @@
+.timer {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--grid-size) / 2);
+}
+
+.text {
+  line-height: 1.25;
+  opacity: 0.8;
+  font-weight: bold;
+}
