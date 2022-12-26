@@ -8,7 +8,7 @@ import { Layout } from './layout'
 import { Message } from './message'
 import { Points } from './points'
 import { Timer } from './timer'
-import { WordForm } from './word-form'
+import { Form } from './form'
 
 const SECONS_PER_WORD = 10
 
@@ -71,7 +71,7 @@ export const App = () => {
   ) : (
     <>
       <Points className={classes.points} total={usedWords.size} />
-      <WordForm
+      <Form
         words={words}
         onChange={handleFormChange}
         onWordSubmit={handleWordSubmit}

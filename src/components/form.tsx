@@ -3,9 +3,9 @@ import classnames from 'classnames'
 import { ChangeEvent, useState } from 'react'
 import { useIsFirstRender } from 'usehooks-ts'
 import { removeAccents } from '../utils'
-import * as classes from './word-form.module.css'
+import * as classes from './form.module.css'
 
-type WordFormProps = {
+type FormProps = {
   words: { [key: string]: string }
   hasError?: boolean
   onWordSubmit: (word: string, callback: VoidFunction) => void
@@ -13,13 +13,13 @@ type WordFormProps = {
   onChange?: VoidFunction
 }
 
-export const WordForm = ({
+export const Form = ({
   words,
   hasError = false,
   onWordSubmit,
   onFirstInput,
   onChange,
-}: WordFormProps) => {
+}: FormProps) => {
   const [inputValue, setInputValue] = useState('')
   const [prefix, setPrefix] = useState('')
   const isFirstRender = useIsFirstRender()
