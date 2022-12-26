@@ -1,3 +1,4 @@
 .parcel-cache
 dist
+coverage
 src/api/data

@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react'
-import { getWords } from '../api/words'
-import { useRandomString } from '../hooks/use-random-string'
-import { MessageType, Words } from '../types'
-import { setRemainingTimeWarnLevel } from '../utils'
 import * as classes from './app.module.css'
-import { Layout } from './layout'
-import { Message } from './message'
-import { Points } from './points'
-import { Timer } from './timer'
-import { Form } from './form'
+import { getWords } from '../../api/words'
+import { Layout } from '../layout'
+import { Timer } from '../timer'
+import { Points } from '../points'
+import { Form } from '../form'
+import { Message } from '../message'
+import { MessageType, Words } from '../../types'
+import { useRandomString } from '../../hooks/use-random-string'
+import { setRemainingTimeWarnLevel } from '../../utils'
 
 const SECONS_PER_WORD = 10
 
