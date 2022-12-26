@@ -22,7 +22,7 @@ export const Timer = ({ onTick, countStart, started, ...rest }: TimerProps) => {
     if (started) {
       startCountdown()
     }
-  }, [startCountdown])
+  }, [startCountdown, started])
 
   onTick(timeLeft)
 
