@@ -1,7 +1,7 @@
 import { ComponentProps, ReactNode } from 'react'
 import * as classes from './message.module.css'
 import classnames from 'classnames'
-import { AlertIcon, ArrowIcon } from '../icons'
+import { AlertIcon, ArrowIcon } from '../../icons'
 
 type MessageProps = {
   type?: 'info' | 'error'

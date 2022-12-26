@@ -2,7 +2,7 @@ import 'animate.css'
 import classnames from 'classnames'
 import { ChangeEvent, useState } from 'react'
 import { useIsFirstRender } from 'usehooks-ts'
-import { removeAccents } from '../utils'
+import { removeAccents } from '../../utils'
 import * as classes from './form.module.css'
 
 type FormProps = {
