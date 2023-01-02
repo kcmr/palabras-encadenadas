@@ -1,4 +1,4 @@
-import { WarnLevel } from '../types'
+import type { WarnLevel } from '../types'
 
 type Seconds = number
 

@@ -1,4 +1,4 @@
-import { Words } from '../types'
+import type { Words } from '../types'
 
 export async function getWords(): Promise<Words> {
   const { words } = await import('./data/words.json')

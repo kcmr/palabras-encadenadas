@@ -1,8 +1,9 @@
-import { ComponentProps, useEffect } from 'react'
+import classnames from 'classnames'
+import { useEffect } from 'react'
 import { useCountdown } from 'usehooks-ts'
 import { AlarmIcon } from '../../icons'
-import classnames from 'classnames'
 import * as classes from './timer.module.css'
+import type { ComponentProps } from 'react'
 
 const ONE_SECOND = 1000
 
