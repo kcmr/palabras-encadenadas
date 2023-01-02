@@ -58,7 +58,7 @@
   },
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged",
-    "pre-push": "npm t"
+    "pre-push": "npm run test:coverage"
   },
   "lint-staged": {
     "*": "prettier --ignore-unknown --write",
