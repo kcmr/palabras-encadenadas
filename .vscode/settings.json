@@ -2,5 +2,8 @@
   "css.lint.validProperties": ["composes"],
   "css.lint.unknownAtRules": "ignore",
   "scss.lint.validProperties": ["composes"],
-  "scss.lint.unknownAtRules": "ignore"
+  "scss.lint.unknownAtRules": "ignore",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
 }

@@ -19,6 +19,7 @@ const Icon = ({ type }: { type: MessageProps['type'] }) => {
   if (type === 'info') {
     return (
       <ArrowIcon
+        data-testid="info"
         size={22}
         className={classes.arrow}
         color="var(--fg-color)"
@@ -27,5 +28,13 @@ const Icon = ({ type }: { type: MessageProps['type'] }) => {
     )
   }
 
-  return <AlertIcon size={18} color="var(--fg-color)" aria-hidden="true" />
+  return (
+    <AlertIcon
+      size={18}
+      color="var(--fg-color)"
+      aria-label="Error"
+      role={'img'}
+      data-testid="error"
+    />
+  )
 }

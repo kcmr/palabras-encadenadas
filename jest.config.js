@@ -1,8 +1,14 @@
+/** @type {import('jest').Config} */
+
 module.exports = {
   testEnvironment: 'jsdom',
   moduleNameMapper: {
-    '\\.module\\.css$': '<rootDir>/test-support/identity-obj-proxy-esm.js',
+    '\\.css$': '<rootDir>/test-support/identity-obj-proxy-esm.js',
   },
   setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect'],
-  collectCoverageFrom: ['**/src/**/*.{ts,tsx}'],
+  collectCoverageFrom: [
+    '**/src/(components|icons)/**/*.tsx',
+    '**/src/(utils|hooks)/**/*.ts',
+  ],
+  coverageReporters: ['text', 'text-summary', 'html-spa'],
 }

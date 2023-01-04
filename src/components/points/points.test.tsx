@@ -1,10 +1,10 @@
-import { render, screen } from '@testing-library/react'
+import { render } from '@testing-library/react'
 import { Points } from './points'
 
 describe('Points', () => {
-  it('renders something', () => {
-    render(<Points total={5} />)
+  it('displays the expected text', () => {
+    const { container } = render(<Points total={5} />)
 
-    expect(screen.getByText('5')).toBeInTheDocument()
+    expect(container).toHaveTextContent('5 palabra(s)')
   })
 })

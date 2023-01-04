@@ -1,7 +1,8 @@
+import classNames from 'classnames'
 import { useEffect, useState } from 'react'
 import { getWords } from '../../api/words'
 import { useRandomString } from '../../hooks/use-random-string'
-import { setRemainingTimeWarnLevel } from '../../utils'
+import { removeAccents, setRemainingTimeWarnLevel } from '../../utils'
 import { Form } from '../form'
 import { Layout } from '../layout'
 import { Message } from '../message'
@@ -21,6 +22,7 @@ const errorMessages = [messages.get('invalid'), messages.get('duplicated')]
 
 export const App = () => {
   const [words, setWords] = useState<Words | null>(null)
+  const [firstSilabe, setFirstSilabe] = useState('')
   const [timerKey, restartTimer] = useRandomString('timer')
   const [timerStarted, setTimerStarted] = useState(false)
   const [usedWords, setUsedWords] = useState(new Set())
@@ -30,11 +32,13 @@ export const App = () => {
     getWords().then(setWords)
   }, [])
 
-  const handleWordSubmit = (word: string, callback: VoidFunction) => {
+  const handleWordSubmit = (value: string) => {
+    const word = `${firstSilabe}${removeAccents(value.toLowerCase())}`
+
     if (validateWord(word)) {
       setUsedWords(new Set(usedWords.add(word)))
       restartTimer()
-      callback()
+      setFirstSilabe(words![word])
     }
   }
 
@@ -64,7 +68,11 @@ export const App = () => {
     }
   }
 
-  const formHasError = errorMessages.includes(message)
+  const isInvalidWord = errorMessages.includes(message)
+  const formClasses = classNames({
+    animate__animated: true,
+    animate__headShake: isInvalidWord,
+  })
 
   const content = !words ? (
     <p>Cargando diccionario…</p>
@@ -77,16 +85,20 @@ export const App = () => {
         key={timerKey}
         started={timerStarted}
       />
-      <Points className={classes.points} total={usedWords.size} />
+      <Points
+        className={classes.points}
+        total={usedWords.size}
+        data-testid="total-words"
+      />
       <Form
-        words={words}
+        className={formClasses}
+        prefix={firstSilabe}
         onChange={handleFormChange}
         onWordSubmit={handleWordSubmit}
         onFirstInput={handleFirstInput}
-        hasError={formHasError}
       />
       <div className={classes.afterForm}>
-        <Message hidden={!Boolean(message)} type={formHasError ? 'error' : 'info'}>
+        <Message hidden={!Boolean(message)} type={isInvalidWord ? 'error' : 'info'}>
           {message}
         </Message>
       </div>

@@ -1,39 +1,33 @@
-import 'animate.css'
 import classnames from 'classnames'
-import { useState } from 'react'
+import { useLayoutEffect, useState } from 'react'
 import { useIsFirstRender } from 'usehooks-ts'
-import { removeAccents } from '../../utils'
 import * as classes from './form.module.css'
-import type { ChangeEvent } from 'react'
+import type { ChangeEvent, ComponentProps } from 'react'
 
 type FormProps = {
-  words: { [key: string]: string }
-  hasError?: boolean
-  onWordSubmit: (word: string, callback: VoidFunction) => void
+  prefix?: string
+  onWordSubmit?: (value: string) => void
   onFirstInput?: () => void
   onChange?: VoidFunction
-}
+} & ComponentProps<'form'>
 
 export const Form = ({
-  words,
-  hasError = false,
+  prefix = '',
   onWordSubmit,
   onFirstInput,
   onChange,
+  ...rest
 }: FormProps) => {
   const [inputValue, setInputValue] = useState('')
-  const [prefix, setPrefix] = useState('')
   const isFirstRender = useIsFirstRender()
+
+  useLayoutEffect(() => {
+    setInputValue('')
+  }, [prefix])
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-
-    const word = `${prefix}${removeAccents(inputValue.toLowerCase())}`
-
-    onWordSubmit(word, () => {
-      setPrefix(words[word])
-      setInputValue('')
-    })
+    onWordSubmit?.(inputValue)
   }
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -41,15 +35,10 @@ export const Form = ({
     onChange?.()
   }
 
-  const formClass = classnames({
-    [classes.form]: true,
-    animate__animated: true,
-    animate__headShake: hasError,
-  })
-
   return (
     <form
-      className={formClass}
+      data-testid="form"
+      className={classnames(classes.form, rest.className)}
       onSubmit={handleSubmit}
       autoCapitalize="off"
       autoCorrect="off"

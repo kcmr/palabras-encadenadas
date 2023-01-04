@@ -8,12 +8,12 @@ import type { ComponentProps } from 'react'
 const ONE_SECOND = 1000
 
 type TimerProps = {
-  onTick: (timeLeft: number) => void
+  onTick?: (timeLeft: number) => void
   countStart: number
-  started: boolean
+  started?: boolean
 } & ComponentProps<'div'>
 
-export const Timer = ({ onTick, countStart, started, ...rest }: TimerProps) => {
+export const Timer = ({ onTick, countStart, started = false, ...rest }: TimerProps) => {
   const [timeLeft, { startCountdown }] = useCountdown({
     countStart,
     intervalMs: ONE_SECOND,
@@ -25,7 +25,7 @@ export const Timer = ({ onTick, countStart, started, ...rest }: TimerProps) => {
     }
   }, [startCountdown, started])
 
-  onTick(timeLeft)
+  onTick?.(timeLeft)
 
   return (
     <div {...rest} className={classnames(classes.timer, rest.className)}>
