@@ -3,7 +3,7 @@ name: Static analysis, test and build
 on: [push, workflow_dispatch]
 
 jobs:
-  validate:
+  Validate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
