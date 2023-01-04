@@ -1,0 +1,32 @@
+name: Static analysis, test and build
+
+on: [push, workflow_dispatch]
+
+jobs:
+  static-analysis:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node environment
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.tool-versions'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Static analysis (lint)
+        run: npm run lint
+
+      - name: Check types
+        run: npm run check-types
+
+      - name: Unit tests
+        run: npm test
+
+      - name: build
+        run: npm run build
