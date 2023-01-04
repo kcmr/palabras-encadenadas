@@ -1,0 +1,28 @@
+name: Static analysis, test and build
+
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+  Validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: '.tool-versions'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Static analysis (ESLint)
+        run: npm run lint
+
+      - name: Check types (tsc)
+        run: npm run check-types
+
+      - name: Unit tests
+        run: npm test
+
+      - name: Build
+        run: npm run build
