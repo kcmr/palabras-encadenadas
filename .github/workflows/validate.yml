@@ -3,7 +3,7 @@ name: Static analysis, test and build
 on: [push, workflow_dispatch]
 
 jobs:
-  static-analysis:
+  install-and-setup:
     runs-on: ubuntu-latest
 
     steps:
@@ -19,14 +19,22 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Static analysis (lint)
+  static-analysis:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Lint (ESLint)
         run: npm run lint
 
-      - name: Check types
+      - name: Check types (tsc)
         run: npm run check-types
 
+  test-and-build:
+    runs-on: ubuntu-latest
+
+    steps:
       - name: Unit tests
         run: npm test
 
-      - name: build
+      - name: Build
         run: npm run build
