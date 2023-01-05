@@ -6,6 +6,7 @@ import type { ChangeEvent, ComponentProps, ReactNode } from 'react'
 
 type FormProps = {
   children?: ReactNode
+  disabled?: boolean
   onWordSubmit?: (value: string) => void
   onFirstInput?: () => void
   onChange?: VoidFunction
@@ -13,6 +14,7 @@ type FormProps = {
 
 export const Form = ({
   children,
+  disabled,
   onWordSubmit,
   onFirstInput,
   onChange,
@@ -50,6 +52,7 @@ export const Form = ({
           id="word"
           autoFocus
           type="text"
+          disabled={disabled}
           value={inputValue}
           onChange={handleInputChange}
           onInput={() => isFirstRender && onFirstInput?.()}

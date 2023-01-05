@@ -25,7 +25,9 @@ export const Timer = ({ onTick, countStart, started = false, ...rest }: TimerPro
     }
   }, [startCountdown, started])
 
-  onTick?.(timeLeft)
+  useEffect(() => {
+    onTick?.(timeLeft)
+  }, [timeLeft, onTick])
 
   return (
     <div {...rest} className={classnames(classes.timer, rest.className)}>

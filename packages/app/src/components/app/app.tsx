@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { getWords } from '../../api/words'
 import { useRandomString } from '../../hooks/use-random-string'
 import { removeAccents, setRemainingTimeWarnLevel } from '../../utils'
@@ -25,6 +25,7 @@ export const App = () => {
   const [firstSilabe, setFirstSilabe] = useState('')
   const [timerKey, restartTimer] = useRandomString('timer')
   const [formKey, resetForm] = useRandomString('form')
+  const [gameFinished, setGameFinished] = useState(false)
   const [timerStarted, setTimerStarted] = useState(false)
   const [usedWords, setUsedWords] = useState(new Set())
   const [message, setMessage] = useState(messages.get('default'))
@@ -70,6 +71,11 @@ export const App = () => {
     }
   }
 
+  const handleTimerTick = useCallback((remainingSeconds: number) => {
+    setGameFinished(remainingSeconds === 0)
+    setRemainingTimeWarnLevel(remainingSeconds)
+  }, [])
+
   const isInvalidWord = errorMessages.includes(message)
   const formClasses = classNames({
     animate__animated: true,
@@ -83,7 +89,7 @@ export const App = () => {
       <Timer
         className={classes.timer}
         countStart={SECONS_PER_WORD}
-        onTick={setRemainingTimeWarnLevel}
+        onTick={handleTimerTick}
         key={timerKey}
         started={timerStarted}
       />
@@ -94,6 +100,7 @@ export const App = () => {
       />
       <Form
         key={formKey}
+        disabled={gameFinished}
         className={formClasses}
         onChange={handleFormChange}
         onWordSubmit={handleWordSubmit}

@@ -49,4 +49,14 @@ describe('Form', () => {
 
     expect(onFirstInput).toHaveBeenCalledTimes(1)
   })
+
+  it('setting "disabled" to "true" sets the input as disabled', () => {
+    const { rerender } = render(<Form />)
+
+    expect(getInput()).toBeEnabled()
+
+    rerender(<Form disabled={true} />)
+
+    expect(getInput()).toBeDisabled()
+  })
 })

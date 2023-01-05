@@ -115,4 +115,16 @@ describe('App', () => {
 
     expect(await getInput()).toHaveDisplayValue('invalid')
   })
+
+  it('prevents typing in the input when the timer ends', async () => {
+    render(<App />)
+
+    await typeValue('a')
+
+    act(() => {
+      jest.advanceTimersByTime(ONE_SECOND * 10)
+    })
+
+    expect(await getInput()).toBeDisabled()
+  })
 })
