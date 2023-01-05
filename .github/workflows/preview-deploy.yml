@@ -7,7 +7,8 @@ env:
 on:
   pull_request:
   push:
-    branches-ignore: [$default-branch]
+    branches-ignore:
+      - main
 
 jobs:
   Deploy-Preview:
