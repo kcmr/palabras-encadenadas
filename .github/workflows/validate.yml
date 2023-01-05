@@ -1,6 +1,15 @@
 name: Static analysis, test and build
 
-on: [push, pull_request, workflow_dispatch]
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - '*.json'
+      - 'packages/app/**'
+  push:
+    paths:
+      - '*.json'
+      - 'packages/app/**'
 
 jobs:
   Validate:
@@ -17,13 +26,13 @@ jobs:
         run: npm ci
 
       - name: Static analysis (ESLint)
-        run: npm run lint
+        run: npm run lint -w=app
 
       - name: Check types (tsc)
-        run: npm run check-types
+        run: npm run check-types -w=app
 
       - name: Unit tests
-        run: npm test
+        run: npm test -w=app
 
       - name: Build
-        run: npm run build
+        run: npm run build -w=app
