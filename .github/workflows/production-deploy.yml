@@ -8,6 +8,9 @@ on:
   push:
     branches:
       - main
+    paths:
+      - '*.json'
+      - 'packages/app/**'
 
 jobs:
   Deploy-Production:
@@ -15,6 +18,9 @@ jobs:
     if: "!contains(github.event.head_commit.message, '[skip ci]')"
     environment: production
     concurrency: production
+    defaults:
+      run:
+        working-directory: packages/app
     steps:
       - uses: actions/checkout@v3
 

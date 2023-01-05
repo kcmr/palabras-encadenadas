@@ -1,4 +1,6 @@
 .parcel-cache
 dist
 coverage
-src/api/data
+.vscode
+.vercel
+packages/app/src/api/data

@@ -6,15 +6,24 @@ env:
 
 on:
   pull_request:
+    paths:
+      - '*.json'
+      - 'packages/app/**'
   push:
     branches-ignore:
       - main
+    paths:
+      - '*.json'
+      - 'packages/app/**'
 
 jobs:
   Deploy-Preview:
     runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, '[skip ci]')"
     environment: preview
+    defaults:
+      run:
+        working-directory: packages/app
     steps:
       - uses: actions/checkout@v3
 
