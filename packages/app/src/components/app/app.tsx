@@ -24,6 +24,7 @@ export const App = () => {
   const [words, setWords] = useState<Words | null>(null)
   const [firstSilabe, setFirstSilabe] = useState('')
   const [timerKey, restartTimer] = useRandomString('timer')
+  const [formKey, resetForm] = useRandomString('form')
   const [timerStarted, setTimerStarted] = useState(false)
   const [usedWords, setUsedWords] = useState(new Set())
   const [message, setMessage] = useState(messages.get('default'))
@@ -38,6 +39,7 @@ export const App = () => {
     if (validateWord(word)) {
       setUsedWords(new Set(usedWords.add(word)))
       restartTimer()
+      resetForm()
       setFirstSilabe(words![word])
     }
   }
@@ -91,12 +93,14 @@ export const App = () => {
         data-testid="total-words"
       />
       <Form
+        key={formKey}
         className={formClasses}
-        prefix={firstSilabe}
         onChange={handleFormChange}
         onWordSubmit={handleWordSubmit}
         onFirstInput={handleFirstInput}
-      />
+      >
+        {firstSilabe}
+      </Form>
       <div className={classes.afterForm}>
         <Message hidden={!Boolean(message)} type={isInvalidWord ? 'error' : 'info'}>
           {message}

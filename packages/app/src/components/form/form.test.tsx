@@ -31,16 +31,6 @@ describe('Form', () => {
     expect(onWordSubmit).toHaveBeenCalledWith('foo')
   })
 
-  it('setting the form prefix after typing a value clears the input', () => {
-    const { rerender } = render(<Form />)
-
-    submitWord('any')
-
-    rerender(<Form prefix="foo" />)
-
-    expect(getInput()).toHaveDisplayValue('')
-  })
-
   it('changing the input value calls "onChange"', () => {
     const onChange = jest.fn()
     render(<Form onChange={onChange} />)

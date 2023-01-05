@@ -18,8 +18,7 @@ async function submitWord(word: string) {
 }
 
 async function typeValue(value: string) {
-  const input = await getInput()
-  fireEvent.input(input, {
+  fireEvent.input(await getInput(), {
     target: {
       value,
     },
@@ -99,5 +98,21 @@ describe('App', () => {
     await submitWord('ta')
 
     expect(container).toHaveTextContent(/palabra repe/i)
+  })
+
+  it('submitting a valid word clears the form input', async () => {
+    render(<App />)
+
+    await submitWord('tabla')
+
+    expect(await getInput()).toHaveDisplayValue('')
+  })
+
+  it('submitting an invalid word does not clear the input', async () => {
+    render(<App />)
+
+    await submitWord('invalid')
+
+    expect(await getInput()).toHaveDisplayValue('invalid')
   })
 })

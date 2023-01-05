@@ -1,18 +1,18 @@
 import classnames from 'classnames'
-import { useLayoutEffect, useState } from 'react'
+import { useState } from 'react'
 import { useIsFirstRender } from 'usehooks-ts'
 import * as classes from './form.module.css'
-import type { ChangeEvent, ComponentProps } from 'react'
+import type { ChangeEvent, ComponentProps, ReactNode } from 'react'
 
 type FormProps = {
-  prefix?: string
+  children?: ReactNode
   onWordSubmit?: (value: string) => void
   onFirstInput?: () => void
   onChange?: VoidFunction
 } & ComponentProps<'form'>
 
 export const Form = ({
-  prefix = '',
+  children,
   onWordSubmit,
   onFirstInput,
   onChange,
@@ -20,10 +20,6 @@ export const Form = ({
 }: FormProps) => {
   const [inputValue, setInputValue] = useState('')
   const isFirstRender = useIsFirstRender()
-
-  useLayoutEffect(() => {
-    setInputValue('')
-  }, [prefix])
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -46,7 +42,7 @@ export const Form = ({
       spellCheck="false"
     >
       <div className={classes.content}>
-        <span>{prefix}</span>
+        <span>{children}</span>
         <label htmlFor="word" className="visually-hidden">
           Palabra o sílabas
         </label>
