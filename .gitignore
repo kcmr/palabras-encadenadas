@@ -1,6 +1,14 @@
+# repo
 node_modules
-dist
 .parcel-cache
+
+# app
+dist
 coverage
 !.vscode/settings.json
 .vercel
+
+# tools
+packages/tools/output
+packages/tools/data
+

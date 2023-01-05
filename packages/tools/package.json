@@ -1,3 +1,11 @@
 {
-  "name": "tools"
+  "name": "tools",
+  "type": "module",
+  "scripts": {
+    "words:update": "./get-words.sh",
+    "prewords:build": "rm -f output/*",
+    "words:build": "node transform.js",
+    "build": "npm run words:update && npm run words:build",
+    "copy-output": "cp -r output/* ../app/src/api/data"
+  }
 }
