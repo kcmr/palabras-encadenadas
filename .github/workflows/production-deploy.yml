@@ -7,11 +7,14 @@ env:
 on:
   push:
     branches:
-      - main
+      - $default-branch
 
 jobs:
   Deploy-Production:
     runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    environment: production
+    concurrency: production
     steps:
       - uses: actions/checkout@v3
 
