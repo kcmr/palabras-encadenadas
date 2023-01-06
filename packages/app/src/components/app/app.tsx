@@ -3,7 +3,9 @@ import { useCallback, useEffect, useState } from 'react'
 import { getWords } from '../../api/words'
 import { useRandomString } from '../../hooks/use-random-string'
 import { removeAccents, setRemainingTimeWarnLevel } from '../../utils'
+import { themeColor } from '../../utils/theme-color'
 import { Form } from '../form'
+import { GameEnd } from '../game-end'
 import { Layout } from '../layout'
 import { Message } from '../message'
 import { Points } from '../points'
@@ -72,9 +74,26 @@ export const App = () => {
   }
 
   const handleTimerTick = useCallback((remainingSeconds: number) => {
-    setGameFinished(remainingSeconds === 0)
+    if (remainingSeconds === 0) {
+      setGameFinished(true)
+      themeColor.set('#fff')
+      document.body.classList.add('no-transition')
+    }
     setRemainingTimeWarnLevel(remainingSeconds)
   }, [])
+
+  const restartGame = () => {
+    setGameFinished(false)
+    setRemainingTimeWarnLevel(SECONS_PER_WORD)
+    themeColor.remove()
+    restartTimer()
+    resetForm()
+    setFirstSilabe('')
+    setUsedWords(new Set())
+    setTimeout(() => {
+      document.body.classList.remove('no-transition')
+    })
+  }
 
   const isInvalidWord = errorMessages.includes(message)
   const formClasses = classNames({
@@ -86,6 +105,7 @@ export const App = () => {
     <p>Cargando diccionario…</p>
   ) : (
     <>
+      {gameFinished && <GameEnd score={36} onPlayClick={restartGame} />}
       <Timer
         className={classes.timer}
         countStart={SECONS_PER_WORD}

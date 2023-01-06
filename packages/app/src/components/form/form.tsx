@@ -1,5 +1,5 @@
 import classnames from 'classnames'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useIsFirstRender } from 'usehooks-ts'
 import * as classes from './form.module.css'
 import type { ChangeEvent, ComponentProps, ReactNode } from 'react'
@@ -22,6 +22,13 @@ export const Form = ({
 }: FormProps) => {
   const [inputValue, setInputValue] = useState('')
   const isFirstRender = useIsFirstRender()
+  const inputRef = useRef<HTMLInputElement>(null)
+
+  useEffect(() => {
+    if (disabled === true) {
+      inputRef.current?.blur()
+    }
+  }, [disabled])
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -49,6 +56,7 @@ export const Form = ({
           Palabra o sílabas
         </label>
         <input
+          ref={inputRef}
           id="word"
           autoFocus
           type="text"

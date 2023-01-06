@@ -45,3 +45,7 @@ body {
   white-space: nowrap !important;
   border: 0 !important;
 }
+
+.no-transition {
+  transition: none;
+}
