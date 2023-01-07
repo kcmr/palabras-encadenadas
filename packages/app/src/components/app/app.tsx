@@ -1,5 +1,5 @@
 import classnames from 'classnames'
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { getWords } from '../../api/words'
 import { useRandomString } from '../../hooks/use-random-string'
 import { removeAccents, setRemainingTimeWarnLevel } from '../../utils'
@@ -26,11 +26,13 @@ export const App = () => {
   const [words, setWords] = useState<Words | null>(null)
   const [firstSilabe, setFirstSilabe] = useState('')
   const [timerKey, restartTimer] = useRandomString('timer')
-  const [formKey, resetForm] = useRandomString('form')
   const [gameFinished, setGameFinished] = useState(false)
   const [timerStarted, setTimerStarted] = useState(false)
   const [usedWords, setUsedWords] = useState(new Set())
   const [message, setMessage] = useState(messages.get('default'))
+
+  const formRef = useRef<{ clearInput: VoidFunction } | null>(null)
+  const resetForm = useCallback(() => formRef.current?.clearInput(), [])
 
   useEffect(() => {
     getWords().then(setWords)
@@ -129,7 +131,7 @@ export const App = () => {
         data-testid="total-words"
       />
       <Form
-        key={formKey}
+        formRef={formRef}
         disabled={gameFinished}
         className={formClasses}
         onChange={handleFormChange}
