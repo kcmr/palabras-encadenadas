@@ -1,4 +1,4 @@
-import classNames from 'classnames'
+import classnames from 'classnames'
 import { useCallback, useEffect, useState } from 'react'
 import { getWords } from '../../api/words'
 import { useRandomString } from '../../hooks/use-random-string'
@@ -62,12 +62,10 @@ export const App = () => {
     return true
   }
 
-  const handleFirstInput = () => {
-    setTimerStarted(true)
-    restartTimer()
-  }
-
   const handleFormChange = () => {
+    if (!timerStarted) {
+      setTimerStarted(true)
+    }
     if (usedWords.size > 0) {
       setMessage(undefined)
     }
@@ -75,28 +73,38 @@ export const App = () => {
 
   const handleTimerTick = useCallback((remainingSeconds: number) => {
     if (remainingSeconds === 0) {
-      setGameFinished(true)
-      themeColor.set('#fff')
-      document.body.classList.add('no-transition')
+      finishGame()
     }
     setRemainingTimeWarnLevel(remainingSeconds)
   }, [])
 
+  const finishGame = () => {
+    setGameFinished(true)
+    setTimerStarted(false)
+    themeColor.set('#fff')
+    document.body.classList.add('no-transition')
+  }
+
   const restartGame = () => {
     setGameFinished(false)
-    setRemainingTimeWarnLevel(SECONS_PER_WORD)
-    themeColor.remove()
     restartTimer()
     resetForm()
     setFirstSilabe('')
+    setMessage(messages.get('default'))
     setUsedWords(new Set())
+    themeColor.unset()
     setTimeout(() => {
       document.body.classList.remove('no-transition')
     })
   }
 
+  const getTotalChainedWords = () => {
+    const totalWords = usedWords.size
+    return totalWords === 1 ? 0 : totalWords - 1
+  }
+
   const isInvalidWord = errorMessages.includes(message)
-  const formClasses = classNames({
+  const formClasses = classnames({
     animate__animated: true,
     animate__headShake: isInvalidWord,
   })
@@ -105,7 +113,9 @@ export const App = () => {
     <p>Cargando diccionario…</p>
   ) : (
     <>
-      {gameFinished && <GameEnd score={36} onPlayClick={restartGame} />}
+      {gameFinished && (
+        <GameEnd score={getTotalChainedWords()} onPlayClick={restartGame} />
+      )}
       <Timer
         className={classes.timer}
         countStart={SECONS_PER_WORD}
@@ -124,7 +134,6 @@ export const App = () => {
         className={formClasses}
         onChange={handleFormChange}
         onWordSubmit={handleWordSubmit}
-        onFirstInput={handleFirstInput}
       >
         {firstSilabe}
       </Form>

@@ -1,6 +1,5 @@
 import classnames from 'classnames'
 import { useEffect, useRef, useState } from 'react'
-import { useIsFirstRender } from 'usehooks-ts'
 import * as classes from './form.module.css'
 import type { ChangeEvent, ComponentProps, ReactNode } from 'react'
 
@@ -16,12 +15,10 @@ export const Form = ({
   children,
   disabled,
   onWordSubmit,
-  onFirstInput,
   onChange,
   ...rest
 }: FormProps) => {
   const [inputValue, setInputValue] = useState('')
-  const isFirstRender = useIsFirstRender()
   const inputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
@@ -63,7 +60,6 @@ export const Form = ({
           disabled={disabled}
           value={inputValue}
           onChange={handleInputChange}
-          onInput={() => isFirstRender && onFirstInput?.()}
         />
       </div>
     </form>

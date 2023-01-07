@@ -8,7 +8,7 @@ export const themeColor = {
     meta.setAttribute('content', color)
     head.appendChild(meta)
   },
-  remove() {
+  unset() {
     head.removeChild(meta)
   },
 }
