@@ -11,6 +11,8 @@
 
 .heading {
   margin: 0;
+  font-size: calc(30 / 16 * 1rem);
+  line-height: 1.3;
 }
 
 .lineBreak {
@@ -20,4 +22,9 @@
 .icon {
   height: calc(var(--grid-size) * 8);
   margin-top: calc(80 / 16 * 1rem);
+}
+
+.share {
+  margin-top: calc(var(--grid-size) * 6);
+  margin-bottom: calc(var(--grid-size) * 11);
 }

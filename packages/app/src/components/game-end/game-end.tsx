@@ -1,5 +1,6 @@
 import classnames from 'classnames'
 import { VictoryIcon } from '../../icons'
+import { Button } from '../button'
 import * as classes from './game-end.module.css'
 
 type GameEndProps = {
@@ -17,9 +18,9 @@ export const GameEnd = ({ score, onPlayClick }: GameEndProps) => (
     <h1 className={classes.heading}>
       Has encadenado <span className={classes.lineBreak}>{score} palabras</span>
     </h1>
-    <div>
+    <div className={classes.share}>
       <p>¡Compártelo!</p>
     </div>
-    <button onClick={onPlayClick}>Jugar otra</button>
+    <Button onClick={onPlayClick}>Jugar otra vez</Button>
   </div>
 )
