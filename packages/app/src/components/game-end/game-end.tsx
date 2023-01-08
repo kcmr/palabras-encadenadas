@@ -1,6 +1,7 @@
 import classnames from 'classnames'
 import { VictoryIcon } from '../../icons'
 import { Button } from '../button'
+import { Sharer } from '../sharer'
 import * as classes from './game-end.module.css'
 
 type GameEndProps = {
@@ -19,7 +20,11 @@ export const GameEnd = ({ score, onPlayClick }: GameEndProps) => (
       Has encadenado <span className={classes.lineBreak}>{score} palabras</span>
     </h1>
     <div className={classes.share}>
-      <p>¡Compártelo!</p>
+      <Sharer
+        url="https://palabras-encadenadas.app"
+        text={`¡He encadenado ${score} palabras! ¿Puedes superarlo?`}
+        hashtags={['palabrasencadenadas']}
+      />
     </div>
     <Button onClick={onPlayClick}>Jugar otra vez</Button>
   </div>
