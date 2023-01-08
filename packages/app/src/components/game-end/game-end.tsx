@@ -23,7 +23,7 @@ export const GameEnd = ({ score, onPlayClick }: GameEndProps) => (
       <Sharer
         url="https://palabras-encadenadas.app"
         text={`¡He encadenado ${score} palabras! ¿Puedes superarlo?`}
-        hashtags={['palabrasencadenadas']}
+        hashtags={['PalabrasEncadenadas']}
       />
     </div>
     <Button onClick={onPlayClick}>Jugar otra vez</Button>
