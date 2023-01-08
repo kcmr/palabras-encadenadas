@@ -40,6 +40,6 @@ describe('Timer', () => {
       jest.advanceTimersByTime(ONE_SECOND * 2)
     })
 
-    expect(onTick).toHaveBeenCalledTimes(3)
+    expect(onTick).toHaveBeenCalledTimes(2)
   })
 })

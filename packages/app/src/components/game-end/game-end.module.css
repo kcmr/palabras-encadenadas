@@ -1,0 +1,30 @@
+.gameEnd {
+  background-color: var(--fg-color);
+  color: #000;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 1;
+}
+
+.heading {
+  margin: 0;
+  font-size: calc(30 / 16 * 1rem);
+  line-height: 1.3;
+}
+
+.lineBreak {
+  display: block;
+}
+
+.icon {
+  height: calc(var(--grid-size) * 8);
+  margin-top: calc(80 / 16 * 1rem);
+}
+
+.share {
+  margin-top: calc(var(--grid-size) * 6);
+  margin-bottom: calc(var(--grid-size) * 11);
+}

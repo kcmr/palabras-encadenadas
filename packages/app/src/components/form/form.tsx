@@ -1,11 +1,12 @@
 import classnames from 'classnames'
-import { useState } from 'react'
-import { useIsFirstRender } from 'usehooks-ts'
+import { useEffect, useRef, useState } from 'react'
 import * as classes from './form.module.css'
-import type { ChangeEvent, ComponentProps, ReactNode } from 'react'
+import type { ChangeEvent, ComponentProps, MutableRefObject, ReactNode } from 'react'
 
 type FormProps = {
   children?: ReactNode
+  disabled?: boolean
+  formRef?: MutableRefObject<{ clearInput: VoidFunction } | null>
   onWordSubmit?: (value: string) => void
   onFirstInput?: () => void
   onChange?: VoidFunction
@@ -13,13 +14,26 @@ type FormProps = {
 
 export const Form = ({
   children,
+  disabled,
+  formRef = { current: null },
   onWordSubmit,
-  onFirstInput,
   onChange,
   ...rest
 }: FormProps) => {
   const [inputValue, setInputValue] = useState('')
-  const isFirstRender = useIsFirstRender()
+  const inputRef = useRef<HTMLInputElement>(null)
+
+  formRef.current = {
+    clearInput() {
+      setInputValue('')
+    },
+  }
+
+  useEffect(() => {
+    if (disabled === true) {
+      inputRef.current?.blur()
+    }
+  }, [disabled])
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -47,12 +61,13 @@ export const Form = ({
           Palabra o sílabas
         </label>
         <input
+          ref={inputRef}
           id="word"
           autoFocus
           type="text"
+          disabled={disabled}
           value={inputValue}
           onChange={handleInputChange}
-          onInput={() => isFirstRender && onFirstInput?.()}
         />
       </div>
     </form>

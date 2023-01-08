@@ -1,9 +1,11 @@
-import classNames from 'classnames'
-import { useEffect, useState } from 'react'
+import classnames from 'classnames'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { getWords } from '../../api/words'
 import { useRandomString } from '../../hooks/use-random-string'
 import { removeAccents, setRemainingTimeWarnLevel } from '../../utils'
+import { themeColor } from '../../utils/theme-color'
 import { Form } from '../form'
+import { GameEnd } from '../game-end'
 import { Layout } from '../layout'
 import { Message } from '../message'
 import { Points } from '../points'
@@ -24,10 +26,13 @@ export const App = () => {
   const [words, setWords] = useState<Words | null>(null)
   const [firstSilabe, setFirstSilabe] = useState('')
   const [timerKey, restartTimer] = useRandomString('timer')
-  const [formKey, resetForm] = useRandomString('form')
+  const [gameFinished, setGameFinished] = useState(false)
   const [timerStarted, setTimerStarted] = useState(false)
   const [usedWords, setUsedWords] = useState(new Set())
   const [message, setMessage] = useState(messages.get('default'))
+
+  const formRef = useRef<{ clearInput: VoidFunction } | null>(null)
+  const resetForm = () => formRef.current?.clearInput()
 
   useEffect(() => {
     getWords().then(setWords)
@@ -59,19 +64,44 @@ export const App = () => {
     return true
   }
 
-  const handleFirstInput = () => {
-    setTimerStarted(true)
-    restartTimer()
-  }
-
   const handleFormChange = () => {
+    if (!timerStarted) {
+      setTimerStarted(true)
+    }
     if (usedWords.size > 0) {
       setMessage(undefined)
     }
   }
 
+  const handleTimerTick = useCallback((remainingSeconds: number) => {
+    if (remainingSeconds === 0) {
+      finishGame()
+    }
+    setRemainingTimeWarnLevel(remainingSeconds)
+  }, [])
+
+  const finishGame = () => {
+    setGameFinished(true)
+    setTimerStarted(false)
+    themeColor.set('#fff')
+    document.body.classList.add('no-transition')
+  }
+
+  const restartGame = () => {
+    setGameFinished(false)
+    restartTimer()
+    resetForm()
+    setFirstSilabe('')
+    setMessage(messages.get('default'))
+    setUsedWords(new Set())
+    themeColor.unset()
+    setTimeout(() => {
+      document.body.classList.remove('no-transition')
+    })
+  }
+
   const isInvalidWord = errorMessages.includes(message)
-  const formClasses = classNames({
+  const formClasses = classnames({
     animate__animated: true,
     animate__headShake: isInvalidWord,
   })
@@ -80,10 +110,11 @@ export const App = () => {
     <p>Cargando diccionario…</p>
   ) : (
     <>
+      {gameFinished && <GameEnd score={usedWords.size - 1} onPlayClick={restartGame} />}
       <Timer
         className={classes.timer}
         countStart={SECONS_PER_WORD}
-        onTick={setRemainingTimeWarnLevel}
+        onTick={handleTimerTick}
         key={timerKey}
         started={timerStarted}
       />
@@ -93,11 +124,11 @@ export const App = () => {
         data-testid="total-words"
       />
       <Form
-        key={formKey}
+        formRef={formRef}
+        disabled={gameFinished}
         className={formClasses}
         onChange={handleFormChange}
         onWordSubmit={handleWordSubmit}
-        onFirstInput={handleFirstInput}
       >
         {firstSilabe}
       </Form>

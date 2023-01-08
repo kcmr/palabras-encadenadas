@@ -34,11 +34,6 @@ body {
   transition: background-color 3s;
 }
 
-::placeholder {
-  color: inherit;
-  opacity: 0.5;
-}
-
 .visually-hidden {
   position: absolute !important;
   width: 1px !important;
@@ -49,4 +44,8 @@ body {
   clip: rect(0, 0, 0, 0) !important;
   white-space: nowrap !important;
   border: 0 !important;
+}
+
+.no-transition {
+  transition: none;
 }

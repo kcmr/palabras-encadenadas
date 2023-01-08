@@ -13,14 +13,6 @@ function submitWord(word: string) {
   fireEvent.submit(screen.getByTestId('form'))
 }
 
-function typeValue(value: string) {
-  fireEvent.input(getInput(), {
-    target: {
-      value,
-    },
-  })
-}
-
 describe('Form', () => {
   it('submitting the form calls "onWordSubmit" with the typed word as param', () => {
     const onWordSubmit = jest.fn()
@@ -40,13 +32,13 @@ describe('Form', () => {
     expect(onChange).toHaveBeenCalled()
   })
 
-  it('calls "onFirstInput" the first time the input is edited', () => {
-    const onFirstInput = jest.fn()
-    render(<Form onFirstInput={onFirstInput} />)
+  it('setting "disabled" to "true" sets the input as disabled', () => {
+    const { rerender } = render(<Form />)
 
-    typeValue('a')
-    typeValue('b')
+    expect(getInput()).toBeEnabled()
 
-    expect(onFirstInput).toHaveBeenCalledTimes(1)
+    rerender(<Form disabled={true} />)
+
+    expect(getInput()).toBeDisabled()
   })
 })

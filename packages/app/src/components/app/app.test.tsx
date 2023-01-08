@@ -25,6 +25,12 @@ async function typeValue(value: string) {
   })
 }
 
+function finishTime() {
+  act(() => {
+    jest.advanceTimersByTime(ONE_SECOND * 10)
+  })
+}
+
 describe('App', () => {
   beforeEach(() => {
     jest.useFakeTimers()
@@ -114,5 +120,40 @@ describe('App', () => {
     await submitWord('invalid')
 
     expect(await getInput()).toHaveDisplayValue('invalid')
+  })
+
+  it('prevents typing in the input when the timer ends', async () => {
+    render(<App />)
+
+    await typeValue('a')
+
+    finishTime()
+
+    expect(await getInput()).toBeDisabled()
+  })
+
+  it('displays the total chained words when the time ends', async () => {
+    const { container } = render(<App />)
+
+    await submitWord('tata')
+    await submitWord('bla')
+
+    finishTime()
+
+    expect(container).toHaveTextContent(/has encadenado 1 palabras/i)
+  })
+
+  it('clicking the "play again" button restarts the game', async () => {
+    render(<App />)
+
+    await submitWord('tata')
+
+    expect(screen.getByTestId('total-words')).toHaveTextContent('1 palabra(s)')
+
+    finishTime()
+
+    fireEvent.click(screen.getByRole('button', { name: /jugar/i }))
+
+    expect(screen.getByTestId('total-words')).toHaveTextContent('0 palabra(s)')
   })
 })

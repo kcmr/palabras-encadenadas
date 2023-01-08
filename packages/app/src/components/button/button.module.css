@@ -1,0 +1,18 @@
+.button {
+  --overlay-opacity: 0;
+
+  font-size: calc(18 / 16 * 1rem);
+  line-height: 1.33;
+  color: var(--fg-color);
+  font-family: inherit;
+  font-weight: bold;
+  border: none;
+  padding: 0 calc(var(--grid-size) * 6);
+  height: calc(var(--grid-size) * 6);
+  background: linear-gradient(rgba(0, 0, 0, var(--overlay-opacity)) 0 100%);
+  background-color: var(--bg-color-alert);
+}
+
+.button:active {
+  --overlay-opacity: 0.15;
+}
