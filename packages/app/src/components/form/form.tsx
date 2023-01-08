@@ -1,7 +1,7 @@
 import classnames from 'classnames'
 import { useEffect, useRef, useState } from 'react'
 import * as classes from './form.module.css'
-import type { ChangeEvent, ComponentProps, ReactNode, MutableRefObject } from 'react'
+import type { ChangeEvent, ComponentProps, MutableRefObject, ReactNode } from 'react'
 
 type FormProps = {
   children?: ReactNode

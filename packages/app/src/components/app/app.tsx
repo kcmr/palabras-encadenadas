@@ -32,7 +32,7 @@ export const App = () => {
   const [message, setMessage] = useState(messages.get('default'))
 
   const formRef = useRef<{ clearInput: VoidFunction } | null>(null)
-  const resetForm = useCallback(() => formRef.current?.clearInput(), [])
+  const resetForm = () => formRef.current?.clearInput()
 
   useEffect(() => {
     getWords().then(setWords)
@@ -100,11 +100,6 @@ export const App = () => {
     })
   }
 
-  const getTotalChainedWords = () => {
-    const totalWords = usedWords.size
-    return totalWords === 1 ? 0 : totalWords - 1
-  }
-
   const isInvalidWord = errorMessages.includes(message)
   const formClasses = classnames({
     animate__animated: true,
@@ -115,9 +110,7 @@ export const App = () => {
     <p>Cargando diccionario…</p>
   ) : (
     <>
-      {gameFinished && (
-        <GameEnd score={getTotalChainedWords()} onPlayClick={restartGame} />
-      )}
+      {gameFinished && <GameEnd score={usedWords.size - 1} onPlayClick={restartGame} />}
       <Timer
         className={classes.timer}
         countStart={SECONS_PER_WORD}
