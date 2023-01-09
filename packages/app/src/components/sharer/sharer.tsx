@@ -1,4 +1,5 @@
 import { FacebookIcon, TwitterIcon, WhatsappIcon } from '../../icons'
+import { isMobile } from '../../utils/is-mobile'
 import * as classes from './sharer.module.css'
 
 type SharerProps = {
@@ -61,5 +62,11 @@ const getShareURL =
       return `https://www.facebook.com/sharer.php?u=${url}`
     }
 
-    return `whatsapp://send?text=${encodeURIComponent([text, url].join(' '))}`
+    if (isMobile()) {
+      return `whatsapp://send?text=${encodeURIComponent([text, url].join(' '))}`
+    }
+
+    return `https://web.whatsapp.com/send?text=${encodeURIComponent(
+      [text, url].join(' ')
+    )}`
   }

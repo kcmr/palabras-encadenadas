@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react'
+import * as util from '../../utils/is-mobile'
 import { Sharer } from './sharer'
 
 const networks = ['facebook', 'twitter', 'whatsapp']
@@ -34,7 +35,20 @@ describe('Sharer', () => {
     )
   })
 
-  it('whatsapp link has the correct format', () => {
+  it('whatsapp link has the correct format for desktop', () => {
+    jest.spyOn(util, 'isMobile').mockReturnValue(false)
+
+    render(<Sharer url="any" text="encode this text!" />)
+
+    expect(screen.getByRole('link', { name: /whatsapp/i })).toHaveAttribute(
+      'href',
+      'https://web.whatsapp.com/send?text=encode%20this%20text!%20any'
+    )
+  })
+
+  it('whatsapp link has the correct format for mobile', () => {
+    jest.spyOn(util, 'isMobile').mockReturnValue(true)
+
     render(<Sharer url="any" text="encode this text!" />)
 
     expect(screen.getByRole('link', { name: /whatsapp/i })).toHaveAttribute(

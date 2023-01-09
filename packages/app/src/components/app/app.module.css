@@ -6,14 +6,14 @@
 
 .timer {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: calc(env(safe-area-inset-top) + 1rem);
+  right: calc(env(safe-area-inset-right) + 1rem);
   composes: gameInfo;
 }
 
 .points {
   position: absolute;
-  top: calc(80 / 16 * 1rem);
+  top: calc(env(safe-area-inset-top) + (80 / 16 * 1rem));
   left: 0;
   right: 0;
 }

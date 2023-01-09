@@ -1,5 +1,5 @@
 .form {
-  margin-top: 48%;
+  margin-top: min(calc(220 / 16 * 1rem), 48%);
 }
 
 .form input {

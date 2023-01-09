@@ -2,7 +2,7 @@
   background-color: var(--fg-color);
   color: #000;
   text-align: center;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
@@ -21,7 +21,7 @@
 
 .icon {
   height: calc(var(--grid-size) * 8);
-  margin-top: calc(80 / 16 * 1rem);
+  margin-top: calc((80 / 16 * 1rem) + env(safe-area-inset-top));
 }
 
 .share {

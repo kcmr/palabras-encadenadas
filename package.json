@@ -22,6 +22,8 @@
   },
   "homepage": "https://github.com/kcmr/palabras-encadenadas#readme",
   "devDependencies": {
+    "@parcel/packager-raw-url": "^2.8.2",
+    "@parcel/packager-xml": "^2.8.2",
     "prettier": "^2.8.0"
   }
 }
