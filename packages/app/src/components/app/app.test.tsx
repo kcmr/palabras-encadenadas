@@ -1,28 +1,19 @@
-import { act, fireEvent, render, screen } from '@testing-library/react'
+import { act, render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import * as api from '../../api/words'
 import { App } from './app'
 
 const ONE_SECOND = 1000
 
+const user = userEvent.setup({ delay: null })
 const getInput = async () => await screen.findByLabelText(/palabra/i)
-const getForm = async () => await screen.findByTestId('form')
 
 async function submitWord(word: string) {
-  fireEvent.change(await getInput(), {
-    target: {
-      value: word,
-    },
-  })
-
-  fireEvent.submit(await getForm())
+  await user.type(await getInput(), `${word}{enter}`)
 }
 
 async function typeValue(value: string) {
-  fireEvent.input(await getInput(), {
-    target: {
-      value,
-    },
-  })
+  await user.type(await getInput(), value)
 }
 
 function finishTime() {
@@ -143,6 +134,16 @@ describe('App', () => {
     expect(container).toHaveTextContent(/has encadenado 1 palabras/i)
   })
 
+  it('does not display a negative number of total chained words when the time ends without submitting words', async () => {
+    const { container } = render(<App />)
+
+    await typeValue('a{backspace}')
+
+    finishTime()
+
+    expect(container).toHaveTextContent(/has encadenado 0 palabras/i)
+  })
+
   it('clicking the "play again" button restarts the game', async () => {
     render(<App />)
 
@@ -152,7 +153,7 @@ describe('App', () => {
 
     finishTime()
 
-    fireEvent.click(screen.getByRole('button', { name: /jugar/i }))
+    await user.click(screen.getByRole('button', { name: /jugar/i }))
 
     expect(screen.getByTestId('total-words')).toHaveTextContent('0 palabra(s)')
   })

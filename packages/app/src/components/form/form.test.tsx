@@ -1,33 +1,29 @@
-import { fireEvent, render, screen } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import { Form } from './form'
 
+const user = userEvent.setup({ delay: null })
 const getInput = () => screen.getByLabelText(/palabra/i)
 
-function submitWord(word: string) {
-  fireEvent.change(getInput(), {
-    target: {
-      value: word,
-    },
-  })
-
-  fireEvent.submit(screen.getByTestId('form'))
+async function submitWord(word: string) {
+  await user.type(await getInput(), `${word}{enter}`)
 }
 
 describe('Form', () => {
-  it('submitting the form calls "onWordSubmit" with the typed word as param', () => {
+  it('submitting the form calls "onWordSubmit" with the typed word as param', async () => {
     const onWordSubmit = jest.fn()
     render(<Form onWordSubmit={onWordSubmit} />)
 
-    submitWord('foo')
+    await submitWord('foo')
 
     expect(onWordSubmit).toHaveBeenCalledWith('foo')
   })
 
-  it('changing the input value calls "onChange"', () => {
+  it('changing the input value calls "onChange"', async () => {
     const onChange = jest.fn()
     render(<Form onChange={onChange} />)
 
-    submitWord('foo')
+    await submitWord('foo')
 
     expect(onChange).toHaveBeenCalled()
   })

@@ -110,7 +110,12 @@ export const App = () => {
     <p>Cargando diccionario…</p>
   ) : (
     <>
-      {gameFinished && <GameEnd score={usedWords.size - 1} onPlayClick={restartGame} />}
+      {gameFinished && (
+        <GameEnd
+          score={usedWords.size > 0 ? usedWords.size - 1 : 0}
+          onPlayClick={restartGame}
+        />
+      )}
       <Timer
         className={classes.timer}
         countStart={SECONS_PER_WORD}

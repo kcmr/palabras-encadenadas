@@ -1,5 +1,8 @@
-import { fireEvent, render, screen } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import { GameEnd } from './game-end'
+
+const user = userEvent.setup({ delay: null })
 
 describe('GameEnd', () => {
   it('Displays the total of chained words', () => {
@@ -8,11 +11,11 @@ describe('GameEnd', () => {
     screen.getByRole('heading', { name: /Has encadenado 5 palabras/i })
   })
 
-  it('clicking the "play again" button calls "onPlayClick"', () => {
+  it('clicking the "play again" button calls "onPlayClick"', async () => {
     const onPlayClick = jest.fn()
     render(<GameEnd score={5} onPlayClick={onPlayClick} />)
 
-    fireEvent.click(screen.getByRole('button', { name: /jugar/i }))
+    await user.click(screen.getByRole('button', { name: /jugar/i }))
 
     expect(onPlayClick).toHaveBeenCalled()
   })
