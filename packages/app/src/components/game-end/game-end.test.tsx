@@ -11,6 +11,18 @@ describe('GameEnd', () => {
     screen.getByRole('heading', { name: /Has encadenado 5 palabras/i })
   })
 
+  it('Displays the correct share heading for scores greater than 0', () => {
+    render(<GameEnd score={5} onPlayClick={() => {}} />)
+
+    screen.getByRole('heading', { name: /compártelo/i })
+  })
+
+  it('Displays a different share heading for score equal to 0', () => {
+    render(<GameEnd score={0} onPlayClick={() => {}} />)
+
+    expect(screen.queryByRole('heading', { name: /compártelo/i })).not.toBeInTheDocument()
+  })
+
   it('clicking the "play again" button calls "onPlayClick"', async () => {
     const onPlayClick = jest.fn()
     render(<GameEnd score={5} onPlayClick={onPlayClick} />)

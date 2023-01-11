@@ -12,38 +12,35 @@ export const Sharer = ({ url, text, hashtags = [] }: SharerProps) => {
   const shareURL = getShareURL({ url, text, hashtags })
 
   return (
-    <>
-      <h2 className={classes.heading}>¡Compártelo!</h2>
-      <ul className={classes.list}>
-        <li>
-          <a href={shareURL('facebook')} target="_blank" rel="noreferrer">
-            <FacebookIcon
-              size={46}
-              className={classes.icon}
-              aria-label="Compartir en Facebook"
-            />
-          </a>
-        </li>
-        <li>
-          <a href={shareURL('twitter')} target="_blank" rel="noreferrer">
-            <TwitterIcon
-              size={46}
-              className={classes.icon}
-              aria-label="Compartir en Twitter"
-            />
-          </a>
-        </li>
-        <li>
-          <a href={shareURL('whatsapp')} target="_blank" rel="noreferrer">
-            <WhatsappIcon
-              size={46}
-              className={classes.icon}
-              aria-label="Compartir en Whatsapp"
-            />
-          </a>
-        </li>
-      </ul>
-    </>
+    <ul className={classes.list}>
+      <li>
+        <a href={shareURL('facebook')} target="_blank" rel="noreferrer">
+          <FacebookIcon
+            size={46}
+            className={classes.icon}
+            aria-label="Compartir en Facebook"
+          />
+        </a>
+      </li>
+      <li>
+        <a href={shareURL('twitter')} target="_blank" rel="noreferrer">
+          <TwitterIcon
+            size={46}
+            className={classes.icon}
+            aria-label="Compartir en Twitter"
+          />
+        </a>
+      </li>
+      <li>
+        <a href={shareURL('whatsapp')} target="_blank" rel="noreferrer">
+          <WhatsappIcon
+            size={46}
+            className={classes.icon}
+            aria-label="Compartir en Whatsapp"
+          />
+        </a>
+      </li>
+    </ul>
   )
 }
 
