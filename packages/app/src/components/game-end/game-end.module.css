@@ -34,3 +34,10 @@
   margin-top: calc(var(--grid-size) * 6);
   margin-bottom: calc(var(--grid-size) * 11);
 }
+
+.actions {
+  margin-top: calc(var(--grid-size) * 11);
+  display: grid;
+  place-content: center;
+  gap: var(--grid-size);
+}

@@ -4,15 +4,23 @@ import * as classes from './button.module.css'
 import type { ComponentProps, ReactNode } from 'react'
 
 type ButtonProps = {
+  outlined?: boolean
+  icon?: ReactNode
   children: ReactNode
 } & ComponentProps<'button'>
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
-  { children, ...rest },
+  { outlined = false, icon, children, ...rest },
   ref
 ) {
+  const buttonClass = classnames({
+    [classes.button]: true,
+    [classes.outlined]: outlined,
+  })
+
   return (
-    <button ref={ref} {...rest} className={classnames(rest.className, classes.button)}>
+    <button ref={ref} {...rest} className={classnames(rest.className, buttonClass)}>
+      <span className={classes.icon}>{icon}</span>
       {children}
     </button>
   )

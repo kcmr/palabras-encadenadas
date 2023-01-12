@@ -1,6 +1,6 @@
 import type { IconProps } from '../types'
 
-export const SadIcon = ({ size, color, ...rest }: IconProps) => {
+export const SadIcon = ({ size, color = 'currentColor', ...rest }: IconProps) => {
   const strokeWidth = rest.strokeWidth ?? '2'
 
   return (

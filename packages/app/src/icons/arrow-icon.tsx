@@ -1,6 +1,6 @@
 import type { IconProps } from '../types'
 
-export const ArrowIcon = ({ size, color, ...rest }: IconProps) => (
+export const ArrowIcon = ({ size, color = 'currentColor', ...rest }: IconProps) => (
   <svg
     {...rest}
     focusable={false}

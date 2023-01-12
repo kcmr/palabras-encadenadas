@@ -12,42 +12,49 @@ exports[`Icons <AlarmIcon> renders the expected svg 1`] = `
     cx="12"
     cy="13"
     r="9"
+    stroke="currentColor"
     strokeLinecap="round"
     strokeLinejoin="round"
     strokeWidth="2"
   />
   <path
     d="M15.5 9.5L12 13"
+    stroke="currentColor"
     strokeLinecap="round"
     strokeLinejoin="round"
     strokeWidth="2"
   />
   <path
     d="M19 19L20 22"
+    stroke="currentColor"
     strokeLinecap="round"
     strokeLinejoin="round"
     strokeWidth="2"
   />
   <path
     d="M5 19L4 22"
+    stroke="currentColor"
     strokeLinecap="round"
     strokeLinejoin="round"
     strokeWidth="2"
   />
   <path
     d="M2 5L5 2"
+    stroke="currentColor"
     strokeLinecap="round"
     strokeLinejoin="round"
     strokeWidth="2"
   />
   <path
     d="M19 2L22 5"
+    stroke="currentColor"
     strokeLinecap="round"
     strokeLinejoin="round"
     strokeWidth="2"
   />
   <path
     d="M12 4V2"
+    stroke="currentColor"
     strokeLinecap="round"
     strokeLinejoin="round"
     strokeWidth="2"
@@ -64,16 +71,19 @@ exports[`Icons <AlertIcon> renders the expected svg 1`] = `
 >
   <path
     d="M12 9V14"
+    stroke="currentColor"
     strokeLinecap="round"
     strokeWidth="2"
   />
   <path
     d="M12 17.5V18"
+    stroke="currentColor"
     strokeLinecap="round"
     strokeWidth="2"
   />
   <path
     d="M2.23231 19.0159L10.3489 3.05158C11.0617 1.64947 12.9383 1.64947 13.6512 3.05158L21.7677 19.0159C22.4513 20.3606 21.5442 22 20.1165 22H3.88346C2.45582 22 1.54868 20.3606 2.23231 19.0159Z"
+    stroke="currentColor"
     strokeLinecap="round"
     strokeLinejoin="round"
     strokeWidth="2"
@@ -90,12 +100,14 @@ exports[`Icons <ArrowIcon> renders the expected svg 1`] = `
 >
   <path
     d="M8 5L3 10L8 15"
+    stroke="currentColor"
     strokeLinecap="round"
     strokeLinejoin="round"
     strokeWidth="2"
   />
   <path
     d="M3 10H11C16.5228 10 21 14.4772 21 20V21"
+    stroke="currentColor"
     strokeLinecap="round"
     strokeLinejoin="round"
     strokeWidth="2"
@@ -151,24 +163,51 @@ exports[`Icons <InfoIcon> renders the expected svg 1`] = `
     cx="12"
     cy="12"
     r="10"
+    stroke="currentColor"
     strokeWidth="2"
   />
   <path
     d="M12 7H12.01"
+    stroke="currentColor"
     strokeLinecap="round"
     strokeWidth="2"
   />
   <path
     d="M10 11H12V16"
+    stroke="currentColor"
     strokeLinecap="round"
     strokeLinejoin="round"
     strokeWidth="2"
   />
   <path
     d="M10 16H14"
+    stroke="currentColor"
     strokeLinecap="round"
     strokeLinejoin="round"
     strokeWidth="2"
+  />
+</svg>
+`;
+
+exports[`Icons <PlayIcon> renders the expected svg 1`] = `
+<svg
+  fill="none"
+  viewBox="0 0 24 24"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <circle
+    cx="12"
+    cy="12"
+    r="10"
+    stroke="currentColor"
+    strokeWidth={2}
+  />
+  <path
+    d="M16 12L10 8V16L16 12Z"
+    stroke="currentColor"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    strokeWidth={2}
   />
 </svg>
 `;
@@ -184,24 +223,66 @@ exports[`Icons <SadIcon> renders the expected svg 1`] = `
     cx="12"
     cy="12"
     r="10"
+    stroke="currentColor"
     strokeLinecap="round"
     strokeWidth="2"
   />
   <path
     d="M8 9.05001V8.95001"
+    stroke="currentColor"
     strokeLinecap="round"
     strokeWidth="2"
   />
   <path
     d="M16 9.05001V8.95001"
+    stroke="currentColor"
     strokeLinecap="round"
     strokeWidth="2"
   />
   <path
     d="M16 16C15.5 14.5 14.2091 13 12 13C9.79086 13 8.5 14.5 8 16"
+    stroke="currentColor"
     strokeLinecap="round"
     strokeLinejoin="round"
     strokeWidth="2"
+  />
+</svg>
+`;
+
+exports[`Icons <ShareIcon> renders the expected svg 1`] = `
+<svg
+  fill="none"
+  focusable={false}
+  viewBox="0 0 24 24"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <circle
+    cx="18"
+    cy="5"
+    r="3"
+    stroke="currentColor"
+    strokeWidth={2}
+  />
+  <circle
+    cx="18"
+    cy="19"
+    r="3"
+    stroke="currentColor"
+    strokeWidth={2}
+  />
+  <circle
+    cx="6"
+    cy="12"
+    r="3"
+    stroke="currentColor"
+    strokeWidth={2}
+  />
+  <path
+    d="M15.408 6.51199L8.59436 10.4866M15.408 17.488L8.59436 13.5134"
+    stroke="currentColor"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    strokeWidth={2}
   />
 </svg>
 `;
@@ -236,25 +317,29 @@ exports[`Icons <VictoryIcon> renders the expected svg 1`] = `
 >
   <path
     d="M12 11L11 3.72792C11 3.26184 11.1851 2.81485 11.5147 2.48528C12.5387 1.46129 14.2923 2.04581 14.4971 3.47939L16 10L17.5081 3.6723C17.7769 2.75853 18.7501 2.25003 19.6537 2.55123C20.4313 2.81044 20.9088 3.59248 20.7842 4.40265L19 16"
+    stroke="currentColor"
     strokeLinecap="round"
     strokeLinejoin="round"
-    strokeWidth="2"
+    strokeWidth={2}
   />
   <path
     d="M19 16C18.4643 20 15.6421 22 11.5 22C7.35786 22 4 20 4 16"
-    strokeWidth="2"
+    stroke="currentColor"
+    strokeWidth={2}
   />
   <path
     d="M4 16V12C4 10.8954 4.89543 10 6 10C7.10457 10 8 10.8954 8 12M12 13V11C12 9.89543 11.1046 9 10 9C8.89543 9 8 9.89543 8 11V15"
+    stroke="currentColor"
     strokeLinecap="round"
     strokeLinejoin="round"
-    strokeWidth="2"
+    strokeWidth={2}
   />
   <path
     d="M13.6923 17H11C9.89543 17 9 16.1046 9 15C9 13.8954 9.89543 13 11 13L15 13C17.2091 13 19.5 15 18.5 18"
+    stroke="currentColor"
     strokeLinecap="round"
     strokeLinejoin="round"
-    strokeWidth="2"
+    strokeWidth={2}
   />
 </svg>
 `;

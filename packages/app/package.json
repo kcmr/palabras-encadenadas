@@ -10,7 +10,7 @@
     "prestart": "npm run clean",
     "start": "parcel",
     "prebuild": "npm run clean",
-    "build": "parcel build --public-url=https://palabras-encadenadas.app/",
+    "build": "parcel build --public-url ${PUBLIC_URL:-https://palabras-encadenadas.app}",
     "launch:prod": "npm run build && npx http-server dist",
     "format": "prettier . --write",
     "lint": "eslint . --ignore-path ../../.gitignore --color --no-error-on-unmatched-pattern --max-warnings 0",

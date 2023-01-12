@@ -22,19 +22,10 @@ const Icon = ({ type }: { type: MessageProps['type'] }) => {
         data-testid="info"
         size={22}
         className={classes.arrow}
-        color="var(--fg-color)"
         aria-hidden="true"
       />
     )
   }
 
-  return (
-    <AlertIcon
-      size={18}
-      color="var(--fg-color)"
-      aria-label="Error"
-      role={'img'}
-      data-testid="error"
-    />
-  )
+  return <AlertIcon size={18} aria-label="Error" role={'img'} data-testid="error" />
 }

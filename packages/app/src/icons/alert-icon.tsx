@@ -1,6 +1,6 @@
 import type { IconProps } from '../types'
 
-export const AlertIcon = ({ size, color, ...rest }: IconProps) => (
+export const AlertIcon = ({ size, color = 'currentColor', ...rest }: IconProps) => (
   <svg
     {...rest}
     focusable={false}

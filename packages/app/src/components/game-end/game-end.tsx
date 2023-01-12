@@ -1,5 +1,6 @@
 import classnames from 'classnames'
-import { SadIcon, VictoryIcon } from '../../icons'
+import { useNativeShare } from '../../hooks/use-native-share'
+import { PlayIcon, SadIcon, ShareIcon, VictoryIcon } from '../../icons'
 import { Button } from '../button'
 import { Sharer } from '../sharer'
 import * as classes from './game-end.module.css'
@@ -12,6 +13,12 @@ type GameEndProps = {
 
 export const GameEnd = ({ score, onPlayClick }: GameEndProps) => {
   const shareHeading = score > 0 ? '¡Compártelo!' : 'Yo que tú no lo compartiría…'
+  const { canUseNativeShare, share } = useNativeShare()
+
+  const shareParams = {
+    text: `¡He encadenado ${score} palabras! ¿Puedes superarlo?`,
+    url: 'https://palabras-encadenadas.app',
+  }
 
   return (
     <div className={classnames(classes.gameEnd, 'full-height')}>
@@ -19,15 +26,31 @@ export const GameEnd = ({ score, onPlayClick }: GameEndProps) => {
       <h1 className={classes.heading}>
         Has encadenado <span className={classes.lineBreak}>{score} palabras</span>
       </h1>
-      <div className={classes.share}>
-        <h2 className={classes.shareHeading}>{shareHeading}</h2>
-        <Sharer
-          url="https://palabras-encadenadas.app"
-          text={`¡He encadenado ${score} palabras! ¿Puedes superarlo?`}
-          hashtags={['PalabrasEncadenadas']}
-        />
+
+      {!canUseNativeShare && (
+        <div className={classes.share}>
+          <h2 className={classes.shareHeading}>{shareHeading}</h2>
+          <Sharer {...shareParams} hashtags={['PalabrasEncadenadas']} />
+        </div>
+      )}
+
+      <div className={classes.actions}>
+        {canUseNativeShare && (
+          <Button
+            onClick={() => share(shareParams)}
+            icon={<ShareIcon size={20} strokeWidth={3} aria-hidden="true" />}
+            outlined
+          >
+            Compartir
+          </Button>
+        )}
+        <Button
+          onClick={onPlayClick}
+          icon={<PlayIcon size={20} strokeWidth={3} aria-hidden="true" />}
+        >
+          Jugar otra
+        </Button>
       </div>
-      <Button onClick={onPlayClick}>Jugar otra vez</Button>
     </div>
   )
 }
