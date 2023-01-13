@@ -8,7 +8,6 @@ type FormProps = {
   disabled?: boolean
   formRef?: MutableRefObject<{ clearInput: VoidFunction } | null>
   onWordSubmit?: (value: string) => void
-  onFirstInput?: () => void
   onChange?: VoidFunction
 } & ComponentProps<'form'>
 

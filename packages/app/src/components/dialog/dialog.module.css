@@ -1,0 +1,63 @@
+html:has(dialog[open]) {
+  overflow: hidden;
+}
+
+.dialog {
+  font-family: var(--font-body-copy);
+  padding: 0;
+  border: none;
+  border-radius: calc(var(--grid-size) / 2);
+  box-shadow: 0 21px 36px -13px rgb(0 0 0 / 29%);
+  line-height: 1.4;
+  inline-size: min(calc(100vw - var(--grid-size) * 4), calc(600 / 16) * 1rem);
+  min-inline-size: min(calc(100vw - var(--grid-size) * 4), calc(600 / 16) * 1rem);
+  block-size: min(95dvb, 90vh);
+  transform: matrix(0.8, 0, 0, 0.5, 0, 0);
+  opacity: 0;
+  transition: transform 240ms cubic-bezier(0.18, 0.89, 0.32, 1.28), opacity 320ms;
+}
+
+.dialog[open] {
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+.header {
+  min-block-size: 40px;
+  background: #eee;
+  overflow: hidden;
+  border-block-end: 1px solid #dfdfdf;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+}
+
+button.closeButton {
+  block-size: unset;
+  color: initial;
+  padding: calc(var(--grid-size) * 2);
+  margin: calc(var(--grid-size) * 2 * -1);
+}
+
+.content {
+  overflow-y: auto;
+}
+
+.header,
+.content {
+  padding: calc(var(--grid-size) * 2);
+}
+
+.dialog::backdrop {
+  opacity: 0;
+}
+
+.visible {
+  opacity: 1;
+  transform: matrix(1, 0, 0, 1, 0, 0);
+}
+
+.hidden {
+  opacity: 0;
+  transition-duration: 400ms;
+}

@@ -3,7 +3,7 @@
   gap: 8px;
   flex-wrap: wrap;
   align-items: center;
-  width: 100%;
+  inline-size: 100%;
 }
 
 .message[hidden] {
@@ -13,7 +13,7 @@
 .text {
   flex: 1;
   font-size: 1rem;
-  opacity: 0.8;
+  opacity: 0.95;
 }
 
 .arrow {
