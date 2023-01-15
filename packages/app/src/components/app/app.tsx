@@ -7,6 +7,7 @@ import { themeColor } from '../../utils/theme-color'
 import { Form } from '../form'
 import { GameEnd } from '../game-end'
 import { GameInfo } from '../game-info'
+import { GameLoading } from '../game-loading'
 import { Layout } from '../layout'
 import { Message } from '../message'
 import { Points } from '../points'
@@ -108,7 +109,7 @@ export const App = () => {
   })
 
   const content = !words ? (
-    <p>Cargando diccionario…</p>
+    <GameLoading />
   ) : (
     <>
       {gameFinished && (
