@@ -5,8 +5,8 @@
     Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
   --bg-color-ok: #4e7b26;
-  --bg-color-warn: #ce4a01;
-  --bg-color-alert: #cd1d2f;
+  --bg-color-warn: #d14900;
+  --bg-color-alert: #c61023;
 
   --bg-color: var(--bg-color-ok);
   --fg-color: #fff;
@@ -33,7 +33,11 @@ body {
   font-family: var(--font-family);
   background-color: var(--bg-color);
   color: var(--fg-color);
-  transition: background-color 3s;
+  transition: background-color 2s;
+}
+
+a {
+  color: var(--bg-color-warn);
 }
 
 .visually-hidden {

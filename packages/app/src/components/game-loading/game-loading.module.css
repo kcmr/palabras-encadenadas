@@ -1,0 +1,37 @@
+.root {
+  display: grid;
+  place-items: center;
+  align-content: center;
+  text-align: center;
+}
+
+.root * {
+  opacity: 0;
+  transition: opacity 200ms linear 300ms;
+}
+
+.visible * {
+  opacity: 1;
+}
+
+.icon {
+  animation: rotate 1s infinite;
+  animation-fill-mode: both;
+  transform-origin: center;
+}
+
+.text {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.large {
+  font-size: calc(30 / 16 * 1rem);
+  display: block;
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(1turn);
+  }
+}
