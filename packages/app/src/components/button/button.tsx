@@ -5,21 +5,24 @@ import type { ComponentProps, ReactNode } from 'react'
 
 type ButtonProps = {
   outlined?: boolean
+  transparent?: boolean
   icon?: ReactNode
-  children: ReactNode
+  children?: ReactNode
+  autofocus?: string // React doesn't add the autofocus attribute required by iOS Safari
 } & ComponentProps<'button'>
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
-  { outlined = false, icon, children, ...rest },
+  { outlined = false, transparent = false, icon, children, ...rest },
   ref
 ) {
   const buttonClass = classnames({
     [classes.button]: true,
     [classes.outlined]: outlined,
+    [classes.transparent]: transparent,
   })
 
   return (
-    <button ref={ref} {...rest} className={classnames(rest.className, buttonClass)}>
+    <button ref={ref} {...rest} className={classnames(buttonClass, rest.className)}>
       <span className={classes.icon}>{icon}</span>
       {children}
     </button>

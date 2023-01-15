@@ -6,6 +6,7 @@ import { removeAccents, setRemainingTimeWarnLevel } from '../../utils'
 import { themeColor } from '../../utils/theme-color'
 import { Form } from '../form'
 import { GameEnd } from '../game-end'
+import { GameInfo } from '../game-info'
 import { Layout } from '../layout'
 import { Message } from '../message'
 import { Points } from '../points'
@@ -116,6 +117,7 @@ export const App = () => {
           onPlayClick={restartGame}
         />
       )}
+      <GameInfo />
       <Timer
         className={classes.timer}
         countStart={SECONS_PER_WORD}

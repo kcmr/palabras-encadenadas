@@ -1,5 +1,5 @@
 .form {
-  margin-top: min(calc(220 / 16 * 1rem), 48%);
+  margin-block-start: min(calc(220 / 16 * 1rem), 48%);
 }
 
 .form input {
@@ -11,9 +11,9 @@
 .form::after {
   content: '';
   display: block;
-  height: 2px;
-  width: 100%;
-  margin-top: var(--grid-size);
+  block-size: 2px;
+  inline-size: 100%;
+  margin-block-start: var(--grid-size);
   background-color: var(--fg-color);
   border-radius: 2px;
 }
@@ -21,7 +21,7 @@
 .content {
   display: flex;
   align-items: center;
-  width: 100%;
+  inline-size: 100%;
   text-transform: uppercase;
   font-size: calc(30 / 16 * 1rem);
   line-height: 1.0666;

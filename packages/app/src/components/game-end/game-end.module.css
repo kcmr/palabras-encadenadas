@@ -3,9 +3,9 @@
   color: #000;
   text-align: center;
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  inline-size: 100vw;
   z-index: 1;
 }
 
@@ -26,17 +26,17 @@
 }
 
 .icon {
-  height: calc(var(--grid-size) * 8);
-  margin-top: calc((80 / 16 * 1rem) + env(safe-area-inset-top));
+  block-size: calc(var(--grid-size) * 8);
+  margin-block-start: calc((80 / 16 * 1rem) + env(safe-area-inset-top));
 }
 
 .share {
-  margin-top: calc(var(--grid-size) * 6);
-  margin-bottom: calc(var(--grid-size) * 11);
+  margin-block-start: calc(var(--grid-size) * 6);
+  margin-block-end: calc(var(--grid-size) * 11);
 }
 
 .actions {
-  margin-top: calc(var(--grid-size) * 11);
+  margin-block-start: calc(var(--grid-size) * 11);
   display: grid;
   place-content: center;
   gap: var(--grid-size);

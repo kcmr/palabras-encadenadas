@@ -115,6 +115,22 @@ exports[`Icons <ArrowIcon> renders the expected svg 1`] = `
 </svg>
 `;
 
+exports[`Icons <CrossIcon> renders the expected svg 1`] = `
+<svg
+  fill="none"
+  focusable={false}
+  viewBox="0 0 24 24"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M20 20L4 4.00003M20 4L4.00002 20"
+    stroke="currentColor"
+    strokeLinecap="round"
+    strokeWidth={2}
+  />
+</svg>
+`;
+
 exports[`Icons <FacebookIcon> renders the expected svg 1`] = `
 <svg
   fill="none"

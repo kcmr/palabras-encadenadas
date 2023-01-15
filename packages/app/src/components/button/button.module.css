@@ -11,7 +11,7 @@
   font-family: inherit;
   font-weight: bold;
   padding: 0 calc(var(--grid-size) * 2);
-  height: calc(var(--grid-size) * 6);
+  block-size: calc(var(--grid-size) * 6);
   background: linear-gradient(rgba(0, 0, 0, var(--overlay-opacity)) 0 100%);
   background-color: var(--_bg-color);
   cursor: pointer;
@@ -19,7 +19,7 @@
   display: flex;
   gap: var(--grid-size);
   align-items: center;
-  min-width: calc(var(--grid-size) * 22);
+  min-inline-size: calc(var(--grid-size) * 22);
 }
 
 .button:active {
@@ -30,6 +30,12 @@
   --_bg-color: var(--fg-color);
   --_fg-color: var(--bg-color-alert);
   --_border-color: var(--bg-color-alert);
+}
+
+.transparent {
+  --_bg-color: transparent;
+  min-inline-size: unset;
+  border: none;
 }
 
 .icon > svg {

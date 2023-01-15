@@ -1,0 +1,22 @@
+button.button {
+  position: absolute;
+  inset-block-start: calc(var(--grid-size) * 0.5);
+  inset-inline-start: calc(var(--grid-size) * 0.5);
+  block-size: initial;
+  padding: calc(var(--grid-size) * 2);
+}
+
+.dialogHeading {
+  font-size: calc(20 / 16 * 1rem);
+  margin: 0;
+}
+
+.dialogContent details {
+  font-size: calc(18 / 16 * 1rem);
+  margin-block-end: calc(var(--grid-size) * 2);
+}
+
+.dialogContent summary {
+  font-weight: bold;
+  cursor: pointer;
+}

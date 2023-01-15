@@ -23,6 +23,14 @@ function finishTime() {
 }
 
 describe('App', () => {
+  beforeAll(() => {
+    // Workaround for <dialog> element not supported yet by JestDOM
+    // https://github.com/jsdom/jsdom/issues/3294
+    HTMLDialogElement.prototype.show = jest.fn()
+    HTMLDialogElement.prototype.showModal = jest.fn()
+    HTMLDialogElement.prototype.close = jest.fn()
+  })
+
   beforeEach(() => {
     jest.useFakeTimers()
     jest.spyOn(api, 'getWords').mockResolvedValue({
@@ -156,5 +164,13 @@ describe('App', () => {
     await user.click(screen.getByRole('button', { name: /jugar/i }))
 
     expect(screen.getByTestId('total-words')).toHaveTextContent('0 palabra(s)')
+  })
+
+  it('clicking the "info" icon opens a dialog with information', async () => {
+    const { container } = render(<App />)
+
+    await user.click(await screen.findByRole('button', { name: /información/i }))
+
+    expect(container).toHaveTextContent(/acerca del juego/i)
   })
 })

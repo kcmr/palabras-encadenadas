@@ -1,24 +1,24 @@
 .gameInfo {
   font-size: calc(18 / 16 * 1rem);
   font-weight: 600;
-  opacity: 0.5;
+  opacity: 0.95;
 }
 
 .timer {
   position: absolute;
-  top: calc(env(safe-area-inset-top) + 1rem);
-  right: calc(env(safe-area-inset-right) + 1rem);
+  inset-block-start: calc(env(safe-area-inset-top) + 1rem);
+  inset-inline-end: calc(env(safe-area-inset-right) + 1rem);
   composes: gameInfo;
 }
 
 .points {
   position: absolute;
-  top: calc(env(safe-area-inset-top) + (80 / 16 * 1rem));
-  left: 0;
-  right: 0;
+  inset-block-start: calc(env(safe-area-inset-top) + (80 / 16 * 1rem));
+  inset-inline-start: 0;
+  inset-inline-end: 0;
 }
 
 .afterForm {
-  padding-top: var(--grid-size);
+  padding-block-start: var(--grid-size);
   position: relative;
 }
