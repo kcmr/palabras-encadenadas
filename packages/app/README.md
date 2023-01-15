@@ -1,3 +1,5 @@
-# Palabras encadenadas
+# App
 
-[![CI validate status](https://github.com/kcmr/palabras-encadenadas/actions/workflows/app-validate.yml/badge.svg)](https://github.com/kcmr/palabras-encadenadas/actions/workflows/app-validate.yml)
+Este paquete contiene el código de la aplicación.
+
+Consulta los [**pre-requisitos para el desarrollo** en el README del proyecto](../../README.md).

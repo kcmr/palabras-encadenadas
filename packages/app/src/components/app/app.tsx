@@ -15,7 +15,7 @@ import { Timer } from '../timer'
 import * as classes from './app.module.css'
 import type { MessageType, Words } from '../../types'
 
-const SECONS_PER_WORD = 10
+const SECONDS_PER_WORD = 10
 
 const messages = new Map<MessageType, string>([
   ['default', 'Escribe una palabra y pulsa intro'],
@@ -121,7 +121,7 @@ export const App = () => {
       <GameInfo />
       <Timer
         className={classes.timer}
-        countStart={SECONS_PER_WORD}
+        countStart={SECONDS_PER_WORD}
         onTick={handleTimerTick}
         key={timerKey}
         started={timerStarted}

@@ -1,6 +1,14 @@
 {
   "name": "tools",
   "type": "module",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kcmr/palabras-encadenadas.git",
+    "directory": "packages/tools"
+  },
+  "author": "Kus Cámara",
+  "license": "MIT",
   "scripts": {
     "words:update": "./get-words.sh",
     "prewords:build": "rm -f output/*",

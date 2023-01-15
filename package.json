@@ -13,10 +13,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kcmr/palabras-encadenadas.git"
+    "url": "https://github.com/kcmr/palabras-encadenadas.git"
   },
-  "author": "Kus Cámara",
-  "license": "ISC",
+  "author": "Kus Cámara",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/kcmr/palabras-encadenadas/issues"
   },
