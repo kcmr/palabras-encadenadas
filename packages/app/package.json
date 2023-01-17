@@ -10,6 +10,7 @@
     "clean": "rimraf dist ../../.parcel-cache",
     "prestart": "npm run clean",
     "start": "parcel",
+    "start:https": "parcel --https",
     "prebuild": "npm run clean",
     "build": "parcel build --public-url ${PUBLIC_URL:-https://palabras-encadenadas.app}",
     "launch:prod": "npm run build && npx http-server dist",
