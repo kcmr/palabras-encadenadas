@@ -1,4 +1,6 @@
-window.addEventListener('load', () => {
+import 'vanilla-cookieconsent'
+
+export function setupCookieConset() {
   const cookieconsent = initCookieConsent()
 
   cookieconsent.run({
@@ -9,7 +11,9 @@ window.addEventListener('load', () => {
     onAccept() {
       if (cookieconsent.allowedCategory('analytics')) {
         cookieconsent.loadScript(
-          'https://www.googletagmanager.com/gtag/js?id=G-146W6XF4HB'
+          'https://www.googletagmanager.com/gtag/js?id=G-146W6XF4HB',
+          // eslint-disable-next-line @typescript-eslint/no-empty-function
+          () => {}
         )
       }
     },
@@ -58,4 +62,4 @@ window.addEventListener('load', () => {
       },
     },
   })
-})
+}

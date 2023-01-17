@@ -28,11 +28,15 @@ body,
   block-size: calc(100% + env(safe-area-inset-top) + env(safe-area-inset-bottom));
 }
 
+html {
+  background-color: var(--bg-color);
+  color: var(--fg-color);
+}
+
 body {
   margin: 0;
   font-family: var(--font-family);
   background-color: var(--bg-color);
-  color: var(--fg-color);
   transition: background-color 2s;
 }
 
