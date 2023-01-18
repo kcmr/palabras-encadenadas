@@ -3,6 +3,7 @@
 
 [![CI status](https://github.com/kcmr/palabras-encadenadas/actions/workflows/app-validate.yml/badge.svg)](https://github.com/kcmr/palabras-encadenadas/actions/workflows/app-validate.yml)
 [![CD status](https://github.com/kcmr/palabras-encadenadas/actions/workflows/production-deploy.yml/badge.svg)](https://github.com/kcmr/palabras-encadenadas/actions/workflows/production-deploy.yml)
+[![codecov](https://codecov.io/gh/kcmr/palabras-encadenadas/branch/main/graph/badge.svg?token=Wt7bchJC5M)](https://codecov.io/gh/kcmr/palabras-encadenadas)
 </div>
 
 ## Acerca de
