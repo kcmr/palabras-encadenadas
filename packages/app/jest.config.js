@@ -10,5 +10,5 @@ module.exports = {
     '**/src/(components|icons)/**/*.tsx',
     '**/src/(utils|hooks)/**/*.ts',
   ],
-  coverageReporters: ['text', 'text-summary', 'html-spa'],
+  coverageReporters: ['text', 'text-summary', 'html-spa', 'lcov'],
 }
