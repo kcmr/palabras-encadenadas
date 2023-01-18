@@ -34,5 +34,10 @@ jobs:
       - name: Unit tests
         run: npm test -w=app
 
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          flags: unittests
+
       - name: Build
         run: npm run build -w=app
