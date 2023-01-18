@@ -63,5 +63,5 @@ export const Dialog = ({ open, header, children, onClose }: DialogProps) => {
 
 function onDialogTransitionEnd(this: HTMLDialogElement) {
   this.removeEventListener('transitionend', onDialogTransitionEnd)
-  ;(this.querySelector('form[method="dialog"]') as HTMLFormElement).submit()
+  this.close()
 }
