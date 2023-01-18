@@ -3,9 +3,9 @@ export const useNativeShare = () => {
 
   /* istanbul ignore next */
   const share = (data?: ShareData) => {
-    try {
-      navigator.share(data)
-    } catch (e) {}
+    navigator.share(data).catch(() => {
+      // noop
+    })
   }
 
   return { canUseNativeShare, share }

@@ -6,7 +6,6 @@ const excludedTypes = [
   'adverbio',
   'anticuado',
   'artículo',
-  'artículo',
   'aumentativodiminutivo',
   'compuesto',
   'conjugado',
@@ -54,8 +53,8 @@ async function run() {
   const matchingEndings = new Set()
 
   for (const [silabe] of lastSilabesWithMatchingWord.entries()) {
-    for (let i = 0; i < wordList.length; i++) {
-      if (wordList[i].startsWith(silabe)) {
+    for (const word of wordList) {
+      if (word.startsWith(silabe)) {
         matchingEndings.add(silabe)
       }
     }
