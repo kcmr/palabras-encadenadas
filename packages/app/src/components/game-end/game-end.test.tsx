@@ -25,8 +25,8 @@ describe('GameEnd', () => {
   })
 
   it('Displays a native share button in supporting clients', async () => {
-    const nativeShare = jest.fn()
-    jest.spyOn(nativeShareModule, 'useNativeShare').mockImplementationOnce(() => ({
+    const nativeShare = vi.fn()
+    vi.spyOn(nativeShareModule, 'useNativeShare').mockImplementationOnce(() => ({
       canUseNativeShare: true,
       share: nativeShare,
     }))
@@ -41,7 +41,7 @@ describe('GameEnd', () => {
   })
 
   it('clicking the "play again" button calls "onPlayClick"', async () => {
-    const onPlayClick = jest.fn()
+    const onPlayClick = vi.fn()
     render(<GameEnd score={5} onPlayClick={onPlayClick} />)
 
     await user.click(screen.getByRole('button', { name: /jugar/i }))

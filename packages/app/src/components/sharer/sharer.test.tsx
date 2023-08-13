@@ -36,7 +36,7 @@ describe('Sharer', () => {
   })
 
   it('whatsapp link has the correct format for desktop', () => {
-    jest.spyOn(util, 'isMobile').mockReturnValue(false)
+    vi.spyOn(util, 'isMobile').mockReturnValue(false)
 
     render(<Sharer url="any" text="encode this text!" />)
 
@@ -47,7 +47,7 @@ describe('Sharer', () => {
   })
 
   it('whatsapp link has the correct format for mobile', () => {
-    jest.spyOn(util, 'isMobile').mockReturnValue(true)
+    vi.spyOn(util, 'isMobile').mockReturnValue(true)
 
     render(<Sharer url="any" text="encode this text!" />)
 
