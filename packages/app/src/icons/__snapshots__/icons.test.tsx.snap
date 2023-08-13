@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Icons <AlarmIcon> renders the expected svg 1`] = `
+exports[`Icons > <AlarmIcon> renders the expected svg 1`] = `
 <svg
   fill="none"
   focusable={false}
@@ -62,7 +62,7 @@ exports[`Icons <AlarmIcon> renders the expected svg 1`] = `
 </svg>
 `;
 
-exports[`Icons <AlertIcon> renders the expected svg 1`] = `
+exports[`Icons > <AlertIcon> renders the expected svg 1`] = `
 <svg
   fill="none"
   focusable={false}
@@ -91,7 +91,7 @@ exports[`Icons <AlertIcon> renders the expected svg 1`] = `
 </svg>
 `;
 
-exports[`Icons <ArrowIcon> renders the expected svg 1`] = `
+exports[`Icons > <ArrowIcon> renders the expected svg 1`] = `
 <svg
   fill="none"
   focusable={false}
@@ -115,7 +115,7 @@ exports[`Icons <ArrowIcon> renders the expected svg 1`] = `
 </svg>
 `;
 
-exports[`Icons <ChainIcon> renders the expected svg 1`] = `
+exports[`Icons > <ChainIcon> renders the expected svg 1`] = `
 <svg
   fill="none"
   viewBox="0 0 24 24"
@@ -138,7 +138,7 @@ exports[`Icons <ChainIcon> renders the expected svg 1`] = `
 </svg>
 `;
 
-exports[`Icons <CrossIcon> renders the expected svg 1`] = `
+exports[`Icons > <CrossIcon> renders the expected svg 1`] = `
 <svg
   fill="none"
   focusable={false}
@@ -154,7 +154,7 @@ exports[`Icons <CrossIcon> renders the expected svg 1`] = `
 </svg>
 `;
 
-exports[`Icons <FacebookIcon> renders the expected svg 1`] = `
+exports[`Icons > <FacebookIcon> renders the expected svg 1`] = `
 <svg
   fill="none"
   viewBox="0 0 32 32"
@@ -191,7 +191,7 @@ exports[`Icons <FacebookIcon> renders the expected svg 1`] = `
 </svg>
 `;
 
-exports[`Icons <InfoIcon> renders the expected svg 1`] = `
+exports[`Icons > <InfoIcon> renders the expected svg 1`] = `
 <svg
   fill="none"
   focusable={false}
@@ -228,7 +228,7 @@ exports[`Icons <InfoIcon> renders the expected svg 1`] = `
 </svg>
 `;
 
-exports[`Icons <PlayIcon> renders the expected svg 1`] = `
+exports[`Icons > <PlayIcon> renders the expected svg 1`] = `
 <svg
   fill="none"
   viewBox="0 0 24 24"
@@ -251,7 +251,7 @@ exports[`Icons <PlayIcon> renders the expected svg 1`] = `
 </svg>
 `;
 
-exports[`Icons <SadIcon> renders the expected svg 1`] = `
+exports[`Icons > <SadIcon> renders the expected svg 1`] = `
 <svg
   fill="none"
   focusable={false}
@@ -288,7 +288,7 @@ exports[`Icons <SadIcon> renders the expected svg 1`] = `
 </svg>
 `;
 
-exports[`Icons <ShareIcon> renders the expected svg 1`] = `
+exports[`Icons > <ShareIcon> renders the expected svg 1`] = `
 <svg
   fill="none"
   focusable={false}
@@ -326,7 +326,7 @@ exports[`Icons <ShareIcon> renders the expected svg 1`] = `
 </svg>
 `;
 
-exports[`Icons <TwitterIcon> renders the expected svg 1`] = `
+exports[`Icons > <TwitterIcon> renders the expected svg 1`] = `
 <svg
   fill="none"
   viewBox="0 0 48 48"
@@ -347,7 +347,7 @@ exports[`Icons <TwitterIcon> renders the expected svg 1`] = `
 </svg>
 `;
 
-exports[`Icons <VictoryIcon> renders the expected svg 1`] = `
+exports[`Icons > <VictoryIcon> renders the expected svg 1`] = `
 <svg
   fill="none"
   focusable={false}
@@ -383,7 +383,7 @@ exports[`Icons <VictoryIcon> renders the expected svg 1`] = `
 </svg>
 `;
 
-exports[`Icons <WhatsappIcon> renders the expected svg 1`] = `
+exports[`Icons > <WhatsappIcon> renders the expected svg 1`] = `
 <svg
   fill="none"
   viewBox="0 0 32 32"

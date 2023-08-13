@@ -6,13 +6,13 @@ const ONE_SECOND = 1000
 
 describe('Timer', () => {
   beforeEach(() => {
-    jest.useFakeTimers()
+    vi.useFakeTimers()
   })
 
   afterEach(() => {
     act(() => {
-      jest.runOnlyPendingTimers()
-      jest.useRealTimers()
+      vi.runOnlyPendingTimers()
+      vi.useRealTimers()
     })
   })
 
@@ -26,18 +26,18 @@ describe('Timer', () => {
     render(<Timer countStart={10} started />)
 
     act(() => {
-      jest.advanceTimersByTime(ONE_SECOND)
+      vi.advanceTimersByTime(ONE_SECOND)
     })
 
     expect(screen.getByText('9')).toBeInTheDocument()
   })
 
   it('calls onTick after started and on each count down interval', () => {
-    const onTick = jest.fn()
+    const onTick = vi.fn()
     render(<Timer countStart={10} onTick={onTick} started />)
 
     act(() => {
-      jest.advanceTimersByTime(ONE_SECOND * 2)
+      vi.advanceTimersByTime(ONE_SECOND * 2)
     })
 
     expect(onTick).toHaveBeenCalledTimes(2)

@@ -18,7 +18,7 @@ async function typeValue(value: string) {
 
 function finishTime() {
   act(() => {
-    jest.advanceTimersByTime(ONE_SECOND * 10)
+    vi.advanceTimersByTime(ONE_SECOND * 10)
   })
 }
 
@@ -26,14 +26,14 @@ describe('App', () => {
   beforeAll(() => {
     // Workaround for <dialog> element not supported yet by JestDOM
     // https://github.com/jsdom/jsdom/issues/3294
-    HTMLDialogElement.prototype.show = jest.fn()
-    HTMLDialogElement.prototype.showModal = jest.fn()
-    HTMLDialogElement.prototype.close = jest.fn()
+    HTMLDialogElement.prototype.show = vi.fn()
+    HTMLDialogElement.prototype.showModal = vi.fn()
+    HTMLDialogElement.prototype.close = vi.fn()
   })
 
   beforeEach(() => {
-    jest.useFakeTimers()
-    jest.spyOn(api, 'getWords').mockResolvedValue({
+    vi.useFakeTimers()
+    vi.spyOn(api, 'getWords').mockResolvedValue({
       tata: 'ta',
       tabla: 'bla',
     })
@@ -41,8 +41,8 @@ describe('App', () => {
 
   afterEach(() => {
     act(() => {
-      jest.runOnlyPendingTimers()
-      jest.useRealTimers()
+      vi.runOnlyPendingTimers()
+      vi.useRealTimers()
     })
   })
 
@@ -59,7 +59,7 @@ describe('App', () => {
     await typeValue('a')
 
     act(() => {
-      jest.advanceTimersByTime(ONE_SECOND * 2)
+      vi.advanceTimersByTime(ONE_SECOND * 2)
     })
 
     await screen.findByText('8')

@@ -11,7 +11,7 @@ async function submitWord(word: string) {
 
 describe('Form', () => {
   it('submitting the form calls "onWordSubmit" with the typed word as param', async () => {
-    const onWordSubmit = jest.fn()
+    const onWordSubmit = vi.fn()
     render(<Form onWordSubmit={onWordSubmit} />)
 
     await submitWord('foo')
@@ -20,7 +20,7 @@ describe('Form', () => {
   })
 
   it('changing the input value calls "onChange"', async () => {
-    const onChange = jest.fn()
+    const onChange = vi.fn()
     render(<Form onChange={onChange} />)
 
     await submitWord('foo')
