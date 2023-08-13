@@ -28,7 +28,7 @@ La aplicación utiliza:
 - CSS modules
 - NPM workspaces
 - Parcel v2 (bundler)
-- Jest con React Testing Library
+- Vitest con React Testing Library
 - Github Actions (CI/CD)
 - Vercel (hosting)
 
