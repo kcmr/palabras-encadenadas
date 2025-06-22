@@ -30,13 +30,13 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Static analysis (ESLint)
-        run: pnpm run lint -w=app
+        run: pnpm -F app run lint
 
       - name: Check types (tsc)
-        run: pnpm run check-types -w=app
+        run: pnpm -F app run check-types
 
       - name: Unit tests
-        run: pnpm test -w=app
+        run: pnpm -F app run test:coverage
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
@@ -45,4 +45,4 @@ jobs:
           flags: unittests
 
       - name: Build
-        run: pnpm run build -w=app
+        run: pnpm -F app run build
