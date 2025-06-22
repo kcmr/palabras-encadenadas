@@ -1,6 +1,6 @@
-import matchers from '@testing-library/jest-dom/matchers'
+import * as matchers from '@testing-library/jest-dom/matchers'
 import { cleanup } from '@testing-library/react'
-import { expect, afterEach } from 'vitest'
+import { afterEach, expect, vi } from 'vitest'
 
 // extends Vitest's expect method with methods from react-testing-library
 expect.extend(matchers)
@@ -9,3 +9,10 @@ expect.extend(matchers)
 afterEach(() => {
   cleanup()
 })
+
+// Avoids the issue where userEvent fails when also using fakeTimers
+// Bug in testing-library/user-event (v14): https://github.com/testing-library/user-event/issues/1115
+globalThis.jest = {
+  ...globalThis.jest,
+  advanceTimersByTime: vi.advanceTimersByTime.bind(vi),
+}

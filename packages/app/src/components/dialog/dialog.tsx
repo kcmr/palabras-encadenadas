@@ -48,7 +48,7 @@ export const Dialog = ({ open, header, children, onClose }: DialogProps) => {
       <form method="dialog" onSubmit={handleFormSubmit} className={classes.header}>
         {header}
         <Button
-          autofocus="true"
+          autoFocus
           aria-label="Cerrar"
           transparent
           className={classes.closeButton}
