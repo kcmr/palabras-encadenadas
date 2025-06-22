@@ -2,6 +2,9 @@
 node_modules
 .parcel-cache
 
+# pnpm
+.pnpm-store/
+
 # app
 dist
 coverage

@@ -1,5 +1,5 @@
 import fs from 'fs/promises'
-import words from './data/words.json' assert { type: 'json' }
+import words from './data/words.json' with { type: 'json' }
 
 const excludedTypes = [
   'abreviatura',

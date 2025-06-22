@@ -14,9 +14,9 @@ Utiliza un [**Diccionario libre en español** de Carlos Fenollosa](https://cfeno
 
 ## Monorepo
 
-Este repositorio contiene **varios paquetes npm** gestionados mediante [npm workspaces](https://docs.npmjs.com/cli/v9/using-npm/workspaces):
+Este repositorio contiene **varios paquetes** gestionados mediante [pnpm workspaces](https://pnpm.io/workspaces):
 
-- [**app**](./packages/app/): contiene el código de la aplicación.
+- [**app**](./packages/app/): contiene el código de la aplicación web.
 - [**tools**](./packages/tools/): contiene scripts para procesar el diccionario y adaptarlo al formato requerido por la app.
 
 ## Tecnologías
@@ -26,7 +26,7 @@ La aplicación utiliza:
 - React 18
 - TypeScript
 - CSS modules
-- NPM workspaces
+- pnpm workspaces
 - Parcel v2 (bundler)
 - Vitest con React Testing Library
 - Github Actions (CI/CD)
@@ -36,21 +36,28 @@ La aplicación utiliza:
 
 ### Pre-requisitos
 
-- Node >= 18
-- NPM >= 8
+- Node >= 20
+- pnpm >= 10
 - [Miller](https://github.com/johnkerl/miller) para la conversión de CSV a JSON
+
+### Instalación
+
+```bash
+# Instalar dependencias
+pnpm install
+```
 
 ### Comandos
 
-Los siguientes **npm-scripts** se pueden ejecutar desde la raíz del monorepo:
+Los siguientes **comandos pnpm** se pueden ejecutar desde la raíz del monorepo:
 
-- `npm start`: lanza la app en modo desarrollo.
-- `npm t`: ejecuta los test en modo _watch_.
-- `npm run test:coverage`: ejecuta los tests con reporte de cobertura.
-- `npm run lint`: ejecuta ESLint.
-- `npm run lint:fix`: ejecuta ESLint corrigiendo errores.
+- `pnpm start`: lanza la app en modo desarrollo.
+- `pnpm test`: ejecuta los test en modo _watch_ para todos los paquetes.
+- `pnpm run test:coverage`: ejecuta los tests con reporte de cobertura.
+- `pnpm run lint`: ejecuta ESLint para todos los paquetes.
+- `pnpm run lint:fix`: ejecuta ESLint corrigiendo errores.
 
-Salvo `npm start`, los demás scripts se ejecutan para todos los paquetes si están definidos. Para ejecutar un script de un paquete en concreto desde la raíz del repositorio, utiliza el flag `-w` con el nombre del paquete. Ejemplo: `npm run words:update -w=tools`.
+Para ejecutar un script de un paquete en concreto desde la raíz del repositorio, utiliza el flag `-F` con el nombre del paquete. Ejemplo: `pnpm run words:update -F tools`.
 
 ## Agradecimientos
 

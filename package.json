@@ -1,15 +1,12 @@
 {
   "name": "palabras-encadenadas",
   "private": "true",
-  "workspaces": [
-    "packages/*"
-  ],
   "scripts": {
-    "start": "npm start -w=app",
-    "test": "npm test --workspaces --if-present",
-    "test:coverage": "npm run test:coverage --workspaces --if-present",
-    "lint": "npm run lint --workspaces --if-present",
-    "lint:fix": "npm run lint:fix --workspaces --if-present"
+    "start": "pnpm -F app run start",
+    "test": "pnpm -r test",
+    "test:coverage": "pnpm -r run test:coverage",
+    "lint": "pnpm -r run lint",
+    "lint:fix": "pnpm -r run lint:fix"
   },
   "repository": {
     "type": "git",
@@ -24,6 +21,8 @@
   "devDependencies": {
     "@parcel/packager-raw-url": "^2.8.2",
     "@parcel/packager-xml": "^2.8.2",
-    "prettier": "^2.8.0"
+    "lint-staged": "~13.1.4",
+    "prettier": "^2.8.0",
+    "typescript": "^5.8.3"
   }
 }
