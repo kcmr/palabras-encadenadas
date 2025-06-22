@@ -22,7 +22,15 @@ jobs:
       run:
         working-directory: packages/app
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.tool-versions'
+          cache: pnpm
 
       - name: Install Vercel CLI
         run: pnpm add -g vercel@latest
