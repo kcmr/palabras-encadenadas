@@ -1,6 +1,7 @@
 {
   "name": "palabras-encadenadas",
   "private": "true",
+  "packageManager": "pnpm@10.10.0",
   "scripts": {
     "start": "pnpm -F app run start",
     "test": "pnpm -r test",
