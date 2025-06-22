@@ -8,7 +8,6 @@ type ButtonProps = {
   transparent?: boolean
   icon?: ReactNode
   children?: ReactNode
-  autofocus?: string // React doesn't add the autofocus attribute required by iOS Safari
 } & ComponentProps<'button'>
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
