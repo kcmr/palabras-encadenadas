@@ -4,6 +4,7 @@
 [![CI status](https://github.com/kcmr/palabras-encadenadas/actions/workflows/app-validate.yml/badge.svg)](https://github.com/kcmr/palabras-encadenadas/actions/workflows/app-validate.yml)
 [![CD status](https://github.com/kcmr/palabras-encadenadas/actions/workflows/production-deploy.yml/badge.svg)](https://github.com/kcmr/palabras-encadenadas/actions/workflows/production-deploy.yml)
 [![codecov](https://codecov.io/gh/kcmr/palabras-encadenadas/branch/main/graph/badge.svg?token=Wt7bchJC5M)](https://codecov.io/gh/kcmr/palabras-encadenadas)
+
 </div>
 
 ## Acerca de
@@ -36,7 +37,7 @@ La aplicación utiliza:
 
 ### Pre-requisitos
 
-- Node >= 20
+- Node >= 24.12.0
 - pnpm >= 10
 - [Miller](https://github.com/johnkerl/miller) para la conversión de CSV a JSON
 
@@ -66,13 +67,3 @@ A [Carlos Fenollosa](https://cfenollosa.com/blog/index.html) por su **Diccionari
 ## Licencia
 
 Este proyecto está bajo una [licencia MIT](LICENSE.md).
-
-
-
-
-
-
-
-
-
-

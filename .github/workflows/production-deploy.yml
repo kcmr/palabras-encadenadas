@@ -8,9 +8,6 @@ on:
   push:
     branches:
       - main
-    paths:
-      - '*.json'
-      - 'packages/app/**'
 
 jobs:
   Deploy-Production:
@@ -29,7 +26,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version-file: '.tool-versions'
+          node-version-file: ".tool-versions"
           cache: pnpm
 
       - name: Install Vercel CLI
