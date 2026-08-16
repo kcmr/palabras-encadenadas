@@ -7,14 +7,18 @@ env:
 on:
   pull_request:
     paths:
-      - '*.json'
-      - 'packages/app/**'
+      - "*.json"
+      - "*.yaml"
+      - ".tool-versions"
+      - "packages/app/**"
   push:
     branches-ignore:
       - main
     paths:
-      - '*.json'
-      - 'packages/app/**'
+      - "*.json"
+      - "*.yaml"
+      - ".tool-versions"
+      - "packages/app/**"
 
 jobs:
   Deploy-Preview:
@@ -32,7 +36,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version-file: '.tool-versions'
+          node-version-file: ".tool-versions"
           cache: pnpm
 
       - name: Install Vercel CLI
